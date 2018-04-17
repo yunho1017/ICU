@@ -7,9 +7,11 @@ class SubjectList extends Component{
 
   subjectRender= () => {
     return this.state.SubjectList.map((subject, index) => {
-      return <Subject key= {index}
-                      name= {subject}
-                      clickEvnt= {this.clickSubject} />
+      return <Subject 
+                key= {index}
+                name= {subject}
+                clickEvnt= {this.clickSubject} 
+              />
     })
   }
 
@@ -19,8 +21,10 @@ class SubjectList extends Component{
 
   render() {
     return(
-      <div id="subject-list-wrapper">
-        {this.subjectRender()}
+      <div id="subject-section">
+        <div id="subject-list">
+          {this.subjectRender()}
+        </div>
       </div>
     )
   }

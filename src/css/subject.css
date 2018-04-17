@@ -16,3 +16,7 @@
 .subject:hover {
   font-size: 20px;
 }
+
+.subject:last-child{
+  border: 0;
+}

@@ -1,7 +1,11 @@
-#subject-list-wrapper{
-  position: absolute;
-  top: 150px;
-  left: 50px;  
-  width: 200px;
+#subject-list{
+  width: 100%;
   background-color: #589AC6;
+}
+
+#subject-section{
+  width: 170px;
+  height: calc( 100% - 100px );
+  display: inline-block;
+  padding-right: 30px;
 }

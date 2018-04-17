@@ -1,0 +1,25 @@
+#assignment-contents-wrapper{
+  width: calc( 100% - 40px);
+  background-color: white;
+  height: calc( 100% - 40px);
+  border-radius: 10px;
+  padding: 20px;
+  overflow: scroll;
+}
+
+#assignment-contents-wrapper ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.item{
+  margin-bottom: 20px;
+}
+
+.item:last-child{
+  margin: 0;
+}
+
+.item ul {
+  font-size: 15px;
+}

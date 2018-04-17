@@ -1,0 +1,6 @@
+#assignment-section{
+  width: calc( 100% - 200px );
+  height: 100%;
+  display: inline-block;
+  float: right;
+}

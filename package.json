@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.22.1",
     "react": "^16.3.1",
+    "react-big-calendar": "^0.19.0",
     "react-dom": "^16.3.1",
+    "react-router": "^3.2.1",
+    "react-router4": "^4.0.0-alpha.3",
     "react-scripts": "1.1.4"
   },
   "scripts": {

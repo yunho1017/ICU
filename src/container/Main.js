@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import '../css/main.css'
 import SubjectList from '../components/main/SubjectList';
+import AssignmentSection from '../components/main/AssignmentSection';
+import '../css/main.css'
 
 class Main extends Component{
   render() {
     return (
       <div id="main-section">
-        <SubjectList/>
+        <SubjectList />
+        <AssignmentSection />
       </div>
     )
   }

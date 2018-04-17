@@ -1,0 +1,15 @@
+#calendar-wrapper{
+  width: calc( 100% - 40px );
+  height: 360px;
+  background-color: white;
+  padding: 20px;  
+  border-radius: 10px;
+}
+
+.rbc-day-bg{
+  cursor: pointer;
+}
+
+.rbc-date-cell a{
+  margin: 5px 5px 0 0;
+}

@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, Router, IndexRoute, browserHistory } from 'react-router';
+import { Main, DefaultLayout } from './container/index';
 import './index.css';
-import { Main } from './container/index';
 
 ReactDOM.render(
-  <Main />
+  <Router history={browserHistory}>
+    <Route path='/' component={DefaultLayout} >
+      <IndexRoute component={Main}/>
+    </Route>
+  </Router>
 , document.getElementById('root'));
