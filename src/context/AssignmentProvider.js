@@ -7,13 +7,12 @@ const { Provider, Consumer: AssignmentConsumer } = Context;
 class AssignmentProvider extends Component {
   state = {
     subjects: ['소프트웨어 공학', '웹프로젝트'],
-    selectedSubject: 'default',
+    selectedSubject:  0,
     selectedAssignment: null,
     selectedDate: {
       start: new Date()
     },
     assignments: {
-      'default' : [],
       '소프트웨어 공학' : [{
         'title': '프로젝트 제안서 제출',
         'allDay': true,

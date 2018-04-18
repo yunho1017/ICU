@@ -26,7 +26,7 @@ const Calendar = ({ state, actions }) => {
           }
           actions.selectDate(date)
         }}
-        events= {state.assignments[state.selectedSubject]}
+        events= {state.assignments[state.subjects[state.selectedSubject]]}
         views= {['month']}
         defaultDate= {new Date()}
       />

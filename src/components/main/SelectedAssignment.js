@@ -15,10 +15,10 @@ class SelectedAssignment extends Component {
       <div id="selected-assignment-section">
         <SelectedDate startDate={startDate} endDate={endDate}/>
         <AssignmentContents 
-          assignments={state.assignments[state.selectedSubject]} 
+          assignments={state.assignments[state.subjects[state.selectedSubject]]} 
           selectedDate={state.selectedDate} 
           selectedAssignment={state.selectedAssignment}
-          styles={{borderTopLeftRadius: 0, borderTopRightRadius: 0, width: 'calc( 100% - 210px )'}}
+          styles={{borderRadius: '0 0 10px 0', width: 'calc( 100% - 210px )'}}
         />
       </div>
     )

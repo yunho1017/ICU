@@ -2,10 +2,10 @@ import React from 'react';
 import '../../css/subject.css'
 import PropTypes from 'prop-types';
 
-const Subject = ({ name, clickEvnt, styles }) => {
+const Subject = ({ name, clickEvnt, styles, index }) => {
   console.log(styles);
   
-  return <div className= {"subject "+styles} onClick={() => clickEvnt(name)} > {name}</div>
+  return <div className= {"subject "+styles} onClick={() => clickEvnt(index)} > {name}</div>
 }
 
 Subject.propTypes = {

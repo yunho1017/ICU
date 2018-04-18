@@ -8,7 +8,7 @@ class AssignmentList extends Component {
     return (
       <div id="assignment-list-section">
         <AssignmentContents
-          assignments={state.assignments[state.selectedSubject]} 
+          assignments={state.assignments[state.subjects[state.selectedSubject]]} 
           selectedDate={null} 
           selectedAssignment={null}
         />
