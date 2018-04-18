@@ -7,8 +7,8 @@ class AssignmentSection extends Component {
   render() {
     return (
       <div id="assignment-section">
-        <AssignmentCalendar />
-        <AssignmentList />
+        <AssignmentCalendar actions={this.props.actions} state={this.props.state} />
+        <AssignmentList state={this.props.state} />
       </div>
     )
   }

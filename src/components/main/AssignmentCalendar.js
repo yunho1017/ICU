@@ -7,8 +7,8 @@ class AssignmentCalendar extends Component {
   render() {
     return (
       <div id="calendar-section">
-        <Calendar />
-        <SelectedAssignment />
+        <Calendar actions={this.props.actions} state={this.props.state} />
+        <SelectedAssignment state={this.props.state}/>
       </div>
     )
   }

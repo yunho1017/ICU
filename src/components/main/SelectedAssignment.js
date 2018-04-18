@@ -3,17 +3,16 @@ import AssignmentContents from './AssignmentContents';
 import '../../css/selectedAssignment.css';
 
 class SelectedAssignment extends Component {
-  state = {
-    assignments: [
-      {title: '프로젝트 제안서', info: '소프트웨어 공학 프로젝트 제안서를 제출하세요'},
-      {title: '프로젝트 제안서', info: '소프트웨어 공학 프로젝트 제안서를 제출하세요'},
-      {title: '프로젝트 제안서', info: '소프트웨어 공학 프로젝트 제안서를 제출하세요'},
-    ]
-  }
   render() {
+    const { state } = this.props;
+
     return (
       <div id="selected-assignment-section">
-        <AssignmentContents assignments={this.state.assignments} />
+        <AssignmentContents 
+          assignments={state.assignments[state.selectedSubject]} 
+          selectedDate={state.selectedDate} 
+          selectedAssignment={state.selectedAssignment} 
+        />
       </div>
     )
   }

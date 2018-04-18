@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Router, IndexRoute, browserHistory } from 'react-router';
 import { Main, DefaultLayout } from './container/index';
-import { AssignmentProvider } from './container/AssignmentProvider';
+import { AssignmentProvider } from './context/AssignmentProvider';
 import './index.css';
 
 ReactDOM.render(

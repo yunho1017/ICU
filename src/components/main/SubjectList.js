@@ -3,20 +3,26 @@ import Subject from './Subject';
 import '../../css/subjectList.css';
 
 class SubjectList extends Component{
-  state = { SubjectList: ['소프트웨어 공학', '프로젝트 실무', '웹프로젝트', '체육', '환경', '진로'] }
+  state = { SubjectList: ['과목이 없습니다.'] }
 
-  subjectRender= () => {
+  subjectRender = () => {
     return this.state.SubjectList.map((subject, index) => {
       return <Subject 
                 key= {index}
                 name= {subject}
-                clickEvnt= {this.clickSubject} 
+                clickEvnt= {this.handleClick} 
               />
     })
   }
 
-  clickSubject= (name) => {
-    console.log(name);
+  componentDidMount= () => {
+    this.setState({
+      SubjectList: this.props.state.subjects
+    });
+  }
+
+  handleClick = (subject) => {
+    this.props.actions.selectSubject(subject);
   }
 
   render() {

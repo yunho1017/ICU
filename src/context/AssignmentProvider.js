@@ -6,10 +6,19 @@ const { Provider, Consumer: AssignmentConsumer } = Context;
 
 class AssignmentProvider extends Component {
   state = {
-    selectedSubject: '선택된 과목이 없습니다.',
-    selectedAssignment: '선택된 과제가 없습니다.',
-    selectedDate: '선택된 날짜가 없습니다.',
-    Assignments: null
+    subjects: ['소프트웨어 공학'],
+    selectedSubject: 'default',
+    selectedAssignment: null,
+    selectedDate: new Date(),
+    assignments: {
+      'default' : [],
+      '소프트웨어 공학' : [{
+        'title': 'All Day Event very long title',
+        'allDay': true,
+        'start': new Date(2018, 3, 3),
+        'end': new Date(2018, 3, 3)
+      }],
+    }
   }
 
   actions = {
@@ -20,17 +29,19 @@ class AssignmentProvider extends Component {
     },
     selectAssignment: (assignment) => {
       this.setState({
-        selectedAssignment: assignment
+        selectedAssignment: assignment,
+        selectedDate: null
       });
     },
     selectDate: (date) => {
       this.setState({
-        selectedDate: date
+        selectedDate: date,
+        selectedAssignment: null
       });
     },
     setAssignments: (assignments) => {
       this.setState({
-        Assignments: assignments
+        assignments: assignments
       });
     }
   }
@@ -38,6 +49,8 @@ class AssignmentProvider extends Component {
   render() {
     const { state, actions } = this;
     const value = { state, actions };
+    console.dir(this.state);
+    
     return (
       <Provider value={value}>
         {this.props.children}
