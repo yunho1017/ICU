@@ -7,14 +7,14 @@
   border-bottom: 1px solid white;
   color: white;
   cursor: pointer;
-  -moz-transition: font-size 250ms ease;
-  -o-transition: font-size 250ms ease;
-  -webkit-transition: font-size 250ms ease;
-  transition: font-size 250ms ease;
+  -moz-transition: background-color 250ms ease;
+  -o-transition: background-color 250ms ease;
+  -webkit-transition: background-color 250ms ease;
+  transition: background-color 250ms ease;
 }
 
 .subject:hover {
-  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.2)
 }
 
 .subject:last-child{

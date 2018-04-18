@@ -5,7 +5,7 @@ const Assignment = ({ title, info }) => {
   return (
     <div className="item">
         {title}
-        <ul> {info} </ul>
+        <div className="submit-btn">과제 제출</div>
     </div>
   )
 }

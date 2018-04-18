@@ -1,4 +1,4 @@
-#assignment-contents-wrapper{
+#assignment-contents-wrapper {
   width: calc( 100% - 40px);
   background-color: white;
   height: calc( 100% - 40px);
@@ -14,12 +14,23 @@
 
 .item{
   margin-bottom: 20px;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
 }
 
-.item:last-child{
+.item:last-child {
   margin: 0;
 }
 
-.item ul {
+.submit-btn {
+  width: 80px;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+  background-color: #589AC6;
+  color: white;
   font-size: 15px;
+  cursor: pointer;
+  float: right;
 }
