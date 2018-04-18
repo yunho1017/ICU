@@ -3,7 +3,7 @@ import Assignment from './Assignment';
 import { ModalConsumer } from '../../context/ModalProvider';
 import '../../css/assignmentContents.css';
 
-const AssignmentContents = ({ assignments, selectedDate, selectedAssignment }) => {
+const AssignmentContents = ({ assignments, selectedDate, selectedAssignment, styles }) => {
   const renderAssignment = (actions) => {
     return assignments.map((assignment, index) => { 
       if(!(!!selectedDate ? assignment.start >= selectedDate.start && assignment.end <= selectedDate.end : true)) return;
@@ -19,7 +19,7 @@ const AssignmentContents = ({ assignments, selectedDate, selectedAssignment }) =
     <ModalConsumer>
       {
         ({ actions }) => (
-          <div id="assignment-contents-wrapper">
+          <div id="assignment-contents-wrapper" style={styles}>
             {renderAssignment(actions)}
           </div>
         )

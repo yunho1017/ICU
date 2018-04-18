@@ -6,10 +6,12 @@ const { Provider, Consumer: AssignmentConsumer } = Context;
 
 class AssignmentProvider extends Component {
   state = {
-    subjects: ['소프트웨어 공학'],
+    subjects: ['소프트웨어 공학', '웹프로젝트'],
     selectedSubject: 'default',
     selectedAssignment: null,
-    selectedDate: new Date(),
+    selectedDate: {
+      start: new Date()
+    },
     assignments: {
       'default' : [],
       '소프트웨어 공학' : [{
@@ -18,6 +20,7 @@ class AssignmentProvider extends Component {
         'start': new Date(2018, 3, 3),
         'end': new Date(2018, 3, 3)
       }],
+      '웹프로젝트': []
     }
   }
 
@@ -25,12 +28,6 @@ class AssignmentProvider extends Component {
     selectSubject: (subject) => {
       this.setState({
         selectedSubject: subject
-      });
-    },
-    selectAssignment: (assignment) => {
-      this.setState({
-        selectedAssignment: assignment,
-        selectedDate: null
       });
     },
     selectDate: (date) => {

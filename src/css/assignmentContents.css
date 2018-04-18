@@ -5,6 +5,8 @@
   border-radius: 10px;
   padding: 20px;
   overflow: scroll;
+  display: inline-block;
+  float: right;
 }
 
 #assignment-contents-wrapper ul {
@@ -28,7 +30,7 @@
   height: 100%;
   display: inline-block;
   text-align: center;
-  background-color: #589AC6;
+  background-color: #001D5B;
   color: white;
   font-size: 15px;
   cursor: pointer;

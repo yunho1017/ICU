@@ -6,11 +6,13 @@ class SubjectList extends Component{
   state = { SubjectList: ['과목이 없습니다.'] }
 
   subjectRender = () => {
+    const { state } = this.props;
     return this.state.SubjectList.map((subject, index) => {
       return <Subject 
-                key= {index}
-                name= {subject}
-                clickEvnt= {this.handleClick} 
+                key = {index}
+                name = {subject}
+                clickEvnt = {this.handleClick} 
+                styles = {state.selectedSubject === subject ? 'selected-subject' : ''}
               />
     })
   }

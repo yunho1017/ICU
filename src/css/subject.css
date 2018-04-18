@@ -1,12 +1,13 @@
 .subject {
-  width: 100%;
+  width: 120px;
   height: 50px;
   font-size: 15px;
   line-height: 50px;
   text-align: center;
-  border-bottom: 1px solid white;
-  color: white;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
+  margin: 5px 0;
   -moz-transition: background-color 250ms ease;
   -o-transition: background-color 250ms ease;
   -webkit-transition: background-color 250ms ease;
@@ -14,7 +15,13 @@
 }
 
 .subject:hover {
-  background-color: rgba(0, 0, 0, 0.2)
+  background-color: white;
+  color: #001D5B;
+}
+
+.selected-subject {
+  background-color: white;
+  color: #001D5B;
 }
 
 .subject:last-child{

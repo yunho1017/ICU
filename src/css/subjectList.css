@@ -1,11 +1,16 @@
 #subject-list{
   width: 100%;
-  background-color: #589AC6;
+  height: 100%;
+  border-top-left-radius: 10px;
+  background-color: #001D5B;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #subject-section{
   width: 170px;
-  height: calc( 100% - 100px );
+  height: 100%;
   display: inline-block;
-  padding-right: 30px;
 }
