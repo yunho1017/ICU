@@ -13,7 +13,7 @@ class AssignmentProvider extends Component {
     assignments: {
       'default' : [],
       '소프트웨어 공학' : [{
-        'title': 'All Day Event very long title',
+        'title': '프로젝트 제안서 제출',
         'allDay': true,
         'start': new Date(2018, 3, 3),
         'end': new Date(2018, 3, 3)
@@ -49,8 +49,6 @@ class AssignmentProvider extends Component {
   render() {
     const { state, actions } = this;
     const value = { state, actions };
-    console.dir(this.state);
-    
     return (
       <Provider value={value}>
         {this.props.children}
