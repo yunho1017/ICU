@@ -6,7 +6,7 @@ const { Provider, Consumer: AssignmentConsumer } = Context;
 
 class AssignmentProvider extends Component {
   state = {
-    subjects: ['소프트웨어 공학', '웹프로젝트'],
+    subjects: ['소프트웨어 공학', '웹프로젝트', '프로젝트 실무'],
     selectedSubject:  0,
     selectedDate: {
       start: new Date()
@@ -43,7 +43,8 @@ class AssignmentProvider extends Component {
         start: new Date(2018, 3, 3),
         end: new Date(2018, 3, 7)
       },],
-      '웹프로젝트': []
+      '웹프로젝트': [],
+      '프로젝트 실무': []
     }
   }
 

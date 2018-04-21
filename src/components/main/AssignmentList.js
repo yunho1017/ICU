@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AssignmentContents from './AssignmentContents';
-import SelectedSubject from './SelectedSubject';
+// import SelectedSubject from './SelectedSubject';
 import '../../css/assignmentList.css';
 
 class AssignmentList extends Component {
