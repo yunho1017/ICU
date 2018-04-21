@@ -11,7 +11,7 @@ class SubjectList extends Component{
       return <Subject 
                 key = {index}
                 name = {subject}
-                clickEvnt = {this.handleClick} 
+                handleEvent = {this.handleClick} 
                 styles = {state.subjects[state.selectedSubject] === subject ? 'selected-subject' : ''}
                 index = {index}
               />

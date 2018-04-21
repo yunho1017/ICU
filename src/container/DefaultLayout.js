@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import HeaderNav from '../components/basic/HeaderNav';
-import Footer from '../components/basic/Footer';
+import Header from '../components/basic/Header';
 import Modal from '../components/modal/Modal'
 import { ModalConsumer } from '../context/ModalProvider';
 
@@ -14,9 +13,8 @@ class DefaultLayout extends Component {
         {
           ({ state, actions }) => (
             <div>
-              <HeaderNav />
+              <Header />
                 {this.props.children}
-              <Footer />
               {this.renderModal(state, actions)}
             </div>
           )

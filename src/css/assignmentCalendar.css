@@ -1,5 +1,5 @@
 #calendar-section{
-  width: calc( 70% - 20px );
+  width: calc( 100% - 320px );
   display: inline-block;
   height: 100%;
   padding-right: 20px

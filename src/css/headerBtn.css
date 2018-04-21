@@ -1,0 +1,12 @@
+.header-btn {
+  line-height: 70px;
+  font-size: 15px; 
+  cursor: pointer;
+  float: right;
+  margin-right: 50px;
+  color: white;
+}
+
+.header-btn:hover {
+  color: rgba(255, 255, 255, 0.5)
+}

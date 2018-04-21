@@ -1,0 +1,26 @@
+.assginment-card-wrapper {
+  width: calc( 100% - 30px );
+  height: 150px;
+  margin-bottom: 20px;
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.card-header {
+  width: 100%;
+  height: 70px;
+}
+
+.selected-date {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+}
+
+.assginment-detail {
+  font-size: 13px;
+}

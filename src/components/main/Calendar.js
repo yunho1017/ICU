@@ -1,6 +1,5 @@
 import React from 'react';
 import BigCalendar from 'react-big-calendar';
-import SubjectList from './SubjectList';
 import moment from 'moment';
 import '../../css/calendar.css'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -8,29 +7,30 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 BigCalendar.momentLocalizer(moment);
 
 const Calendar = ({ state, actions }) => {
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    return { 
+      style: { backgroundColor: event.color } 
+    }
+  } 
+  const onSelectEvent = (e) => {
+    const date = {
+      start: e.start,
+      end: e.end
+    };
+    actions.selectDate(date);
+  }
+
   return (
     <div id="calendar-wrapper">
       <BigCalendar
         selectable
-        onSelectEvent={(e) => {
-          const date = {
-            start: e.start,
-            end: e.end
-          }
-          actions.selectDate(date) 
-        }} 
-        onSelectSlot={(e) => {
-          const date = {
-            start: e.start,
-            end: e.end
-          }
-          actions.selectDate(date)
-        }}
-        events= {state.assignments[state.subjects[state.selectedSubject]]}
-        views= {['month']}
-        defaultDate= {new Date()}
+        views = {['month']}
+        defaultDate = {new Date()}
+        onSelectSlot = {onSelectEvent}
+        onSelectEvent = {onSelectEvent}
+        eventPropGetter ={(eventStyleGetter)}
+        events = {state.assignments[state.subjects[state.selectedSubject]]}
       />
-      <SubjectList actions={actions} state={state} />
     </div>
   )
 }

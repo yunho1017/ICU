@@ -6,17 +6,20 @@ import '../../css/assignmentList.css';
 class AssignmentList extends Component {
   render() {
     const { state } = this.props;
+
     return (
       <div id="assignment-list-section">
-        <SelectedSubject subject = {state.subjects[state.selectedSubject]} />
+        {/* <SelectedSubject subject = {state.subjects[state.selectedSubject]} /> */}
         <AssignmentContents
           assignments = {state.assignments[state.subjects[state.selectedSubject]]} 
-          selectedDate = {null} 
-          selectedAssignment = {null}
-          styles = {{borderRadius: '0 0 10px 10px', height: 'calc( 100% - 90px )'}}
+          selectedDate = {state.selectedDate} 
         />
       </div>
     )
+  }
+
+  getDateFormat = (date) => {
+    return (date.getMonth() + 1) + '월 ' + (date.getDate()) + '일';
   }
 }
 

@@ -1,6 +1,7 @@
 #assignment-list-section{
-  width: 30%;
+  width: 300px;
   height: 100%;
   display: inline-block;
   float: right;
+  box-shadow: 0 0 15px 0 rgba(126, 126, 126, 0.25);
 }

@@ -1,11 +1,13 @@
 import React from 'react';
 import '../../css/assignmentContents.css';
 
-const Assignment = ({ title, clickEvnt }) => {
+const Assignment = ({ title, handleEvent, auther, detail }) => {
   return (
     <div className="item">
         {title}
-        <div className="submit-btn" onClick={() => clickEvnt('과제 제출')} >과제 제출</div>
+        {auther}
+        {detail}
+        <div className="submit-btn" onClick={() => handleEvent('과제 제출')} >과제 제출</div>
     </div>
   )
 }

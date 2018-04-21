@@ -1,30 +1,54 @@
-import React from 'react';
-import Assignment from './Assignment';
+import React, { Component } from 'react';
+import AssignmentCard from './AssignmentCard';
 import { ModalConsumer } from '../../context/ModalProvider';
 import '../../css/assignmentContents.css';
 
-const AssignmentContents = ({ assignments, selectedDate, selectedAssignment, styles }) => {
-  const renderAssignment = (actions) => {
+class AssignmentContents extends Component {
+  renderAssignmentCard = (actions) => { 
+    const { assignments, selectedDate } = this.props;
     return assignments.map((assignment, index) => { 
-      if(!(!!selectedDate ? assignment.start >= selectedDate.start && assignment.end <= selectedDate.end : true)) return;
-      if(!(!!selectedAssignment ? assignment.title === selectedAssignment : true)) return;
-      return <Assignment 
+      let startDate = new Date(assignment.start);
+      let endDate = new Date(assignment.end);
+      endDate.setDate(endDate.getDate() - 1);
+      
+      if(!(!!selectedDate ? 
+        (startDate >= selectedDate.start && startDate <= selectedDate.end) 
+          || (endDate >= selectedDate.start && endDate <= selectedDate.end)
+          || (startDate <= selectedDate.start && endDate >= selectedDate.end ) : true)) return '';
+          
+      const styles = { backgroundColor : assignment.color };
+
+      return <AssignmentCard 
                 key = {index}
                 title = {assignment.title}
-                clickEvnt = {actions.click} 
+                auther = {assignment.auther}
+                colorCode = {assignment.colorCode}
+                detail = {assignment.detail}
+                handleEvent = {actions.click} 
+                styles = {styles}
+                start = {this.getDateFormat(startDate)}
+                end = {this.getDateFormat(endDate)}
               />
     })
   }
-  return (
-    <ModalConsumer>
-      {
-        ({ actions }) => (
-          <div id="assignment-contents-wrapper" style={styles}>
-            {renderAssignment(actions)}
-          </div>
-        )
-      }
-    </ModalConsumer>
-  )
+
+  render() {
+    return (
+      <ModalConsumer>
+        {
+          ({ actions }) => (
+            <div id="assignment-contents-wrapper">
+              {this.renderAssignmentCard(actions)}
+            </div>
+          )
+        }
+      </ModalConsumer>
+    )
+  }
+
+  getDateFormat = (date) => {
+    return (date.getMonth() + 1) + '/' + (date.getDate());
+  }
 }
+
 export default AssignmentContents;

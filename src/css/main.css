@@ -1,7 +1,5 @@
 #main-section {
-  width: calc( 100% - 100px );
-  height: calc( 100vh - 270px );
+  width: 100%;
+  height: calc( 100vh - 70px );
   position: relative;
-  background-color: #D8D8D8;
-  padding: 50px
 }

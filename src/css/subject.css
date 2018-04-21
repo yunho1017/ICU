@@ -1,27 +1,28 @@
 .subject {
-  width: 120px;
+  width: 100%;
   height: 50px;
   font-size: 15px;
   line-height: 50px;
   text-align: center;
-  border-radius: 10px;
+  /* box-shadow: 0px 0px px 0 rgba(150, 150, 150, 0.50); */
+  /* border-radius: 10px; */
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  margin: 5px 0;
   -moz-transition: background-color 250ms ease;
   -o-transition: background-color 250ms ease;
   -webkit-transition: background-color 250ms ease;
   transition: background-color 250ms ease;
+
 }
 
 .subject:hover {
   background-color: white;
-  color: #001D5B;
+  color: #232227;
 }
 
 .selected-subject {
   background-color: white;
-  color: #001D5B;
+  color: #232227;
 }
 
 .subject:last-child{
