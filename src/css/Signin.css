@@ -39,8 +39,28 @@
   margin-right: 10px;
   border: 0;
   background-color : rgb(80, 71, 80);
+  color: white;
+  font-size: 13px;
 }
 
+.signin-input::placeholder {
+  color: white;
+  font-size: 13px;
+}
+
+.signin-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+  font-size: 13px;
+}
+
+.signin-input::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+  font-size: 13px;
+}
+
+.signin-input:focus {
+  outline: none;
+}
 #signin-btn {
   width: 300px;
   height: 50px;
