@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint-config-airbnb": "^16.1.0",
+    "immutable": "^3.8.2",
     "moment": "^2.22.1",
     "react": "^16.3.1",
     "react-big-calendar": "^0.19.0",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.1",
     "react-modal": "^3.4.1",
     "react-router": "^3.2.1",
@@ -17,5 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "prettier-eslint": "^8.8.1"
   }
 }

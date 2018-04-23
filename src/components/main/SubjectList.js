@@ -3,11 +3,19 @@ import Subject from './Subject';
 import '../../css/subjectList.css';
 
 class SubjectList extends Component{
-  state = { SubjectList: ['과목이 없습니다.'] }
-  
+  render() {
+    return(
+      <div id="subject-section">
+        <div id="subject-list">
+          {this.subjectRender()}
+        </div>
+      </div>
+    )
+  }
+
   subjectRender = () => {
     const { state } = this.props;
-    return this.state.SubjectList.map((subject, index) => {
+    return state.subjects.map((subject, index) => {
       return <Subject 
                 key = {index}
                 name = {subject}
@@ -18,24 +26,8 @@ class SubjectList extends Component{
     })
   }
 
-  componentDidMount= () => {
-    this.setState({
-      SubjectList: this.props.state.subjects
-    });
-  }
-
   handleClick = (subject) => {
     this.props.actions.selectSubject(subject);
-  }
-
-  render() {
-    return(
-      <div id="subject-section">
-        <div id="subject-list">
-          {this.subjectRender()}
-        </div>
-      </div>
-    )
   }
 }
 

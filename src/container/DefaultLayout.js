@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import Header from '../components/basic/Header';
-import Modal from '../components/modal/Modal'
-import { ModalConsumer } from '../context/ModalProvider';
+import Modal from '../components/modal/Modal';
+import { MainConsumer } from '../context/MainProvider';
 
 class DefaultLayout extends Component {
-  renderModal= (state, actions) => {
-    if(state.isModal) return <Modal state={state} actions={actions} />;
-  }
   render() {
     return (
-      <ModalConsumer>
+      <MainConsumer>
         {
           ({ state, actions }) => (
             <div>
-              <Header />
-                {this.props.children}
+              <Header actions = {actions} />
+              {this.props.children}
               {this.renderModal(state, actions)}
             </div>
           )
         }
-      </ModalConsumer>
+      </MainConsumer>
     )
+  }
+  
+  renderModal= (state, actions) => {
+    if(state.modal.isModal) return <Modal state={state} actions={actions} />;
   }
 }
 

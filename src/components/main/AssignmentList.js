@@ -13,13 +13,11 @@ class AssignmentList extends Component {
         <AssignmentContents
           assignments = {state.assignments[state.subjects[state.selectedSubject]]} 
           selectedDate = {state.selectedDate} 
+          actions = {this.props.actions}
+          state = {this.props.state}
         />
       </div>
     )
-  }
-
-  getDateFormat = (date) => {
-    return (date.getMonth() + 1) + '월 ' + (date.getDate()) + '일';
   }
 }
 

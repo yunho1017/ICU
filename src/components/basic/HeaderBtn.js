@@ -3,7 +3,7 @@ import '../../css/headerBtn.css';
 
 const HeaderBtn = ({ content, handleEvent }) => {
   return (
-    <div className="header-btn" onClick= {() => handleEvent(content)}>{content}</div>
+    <div className="header-btn" onClick= {() => handleEvent('mypage')}>{content}</div>
   )
 }
 

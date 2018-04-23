@@ -9,7 +9,7 @@ const AssignmentCard = ({ start, end, title, detail, styles, handleEvent }) => {
   const time = !!endDate ? '~' : '';
 
   return (
-    <div className="assginment-card-wrapper" style = {styles} onClick = {handleEvent}>
+    <div className="assginment-card-wrapper" style = {styles} onClick = {() => handleEvent('assignment')}>
       <div className="card-header">
         <div className="selected-date"> {startDate + ' ' + time + ' ' + endDate}</div>
         <div className="card-title">{title}</div>
