@@ -1,5 +1,6 @@
 #main-section {
-  width: 100%;
+  width: calc( 100% - 230px );
   height: calc( 100vh - 70px );
   position: relative;
+  display: inline-block;
 }

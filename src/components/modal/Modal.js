@@ -18,7 +18,7 @@ class Modal extends Component {
   renderModal = () => {
     const { state } = this.props;
     
-    switch(state.modal.id) {
+    switch(state.id) {
       case 'mypage' :
         return <Mypage />
       case 'assignment' :

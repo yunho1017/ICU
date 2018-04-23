@@ -20,17 +20,19 @@ class AssignmentContents extends Component {
       endDate.setDate(endDate.getDate() - 1);
 
       return <AssignmentCard 
-                key = {index}
-                title = {assignment.title}
-                auther = {assignment.auther}
-                colorCode = {assignment.colorCode}
-                detail = {assignment.detail}
-                handleEvent = {actions.modalClick} 
+                key = {assignment.key}
+                assignment = {assignment}
+                handleEvent = {this.selectCard} 
                 styles = {styles}
                 start = {this.getDateFormat(startDate)}
                 end = {this.getDateFormat(endDate)}
               />
     })
+  }
+
+  selectCard = (id, assignment) => {
+    this.props.modalActions.modalClick(id);
+    this.props.actions.setAssignmentsCard(assignment);
   }
 
   getDateFormat = (date) => {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Subject from './Subject';
-import '../../css/subjectList.css';
+import SideItem from './SideItem';
+import '../../css/sideMenu.css';
 
-class SubjectList extends Component{
+class SideMenu extends Component{
   render() {
     return(
       <div id="subject-section">
@@ -15,8 +15,9 @@ class SubjectList extends Component{
 
   subjectRender = () => {
     const { state } = this.props;
+    
     return state.subjects.map((subject, index) => {
-      return <Subject 
+      return <SideItem 
                 key = {index}
                 name = {subject}
                 handleEvent = {this.handleClick} 
@@ -27,8 +28,8 @@ class SubjectList extends Component{
   }
 
   handleClick = (subject) => {
-    this.props.actions.selectSubject(subject);
+    this.props.actions.setSubject(subject);
   }
 }
 
-export default SubjectList;
+export default SideMenu;

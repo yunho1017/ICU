@@ -1,6 +1,6 @@
 #subject-list{
   width: 100%;
-  height: 100%;
+  height: calc( 100vh - 70px );
   background-color: #232227;
   display: flex;
   flex-direction: column;

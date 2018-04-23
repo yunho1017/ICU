@@ -6,76 +6,56 @@ const { Provider, Consumer: MainConsumer } = Context;
 
 class MainProvider extends Component {
   state = {
-    data: {
-      subjects: ['소프트웨어 공학', '웹프로젝트', '프로젝트 실무'],
-      selectedSubject:  0,
-      selectedDate: {
-        start: new Date()
-      },
-      assignments: {
-        '소프트웨어 공학' : [{
-          title: '프로젝트 제안서 제출',
-          detail: '프로젝트 제안서를 제출하시오',
-          auther: '양은정',
-          color: '#ffa78c',
-          start: new Date(2018, 3, 3),
-          end: new Date(2018, 3, 7)
-        }],
-        '웹프로젝트': [],
-        '프로젝트 실무': []
-      },
-      assignmentsCardList: []
+    subjects: ['소프트웨어 공학', '웹프로젝트', '프로젝트 실무'],
+    selectedSubject:  0,
+    selectedDate: {
+      start: new Date()
     },
-    modal: {
-      isModal: false,
-      id: null
-    }
+    assignments: {
+      '소프트웨어 공학' : [{
+        key: 123,
+        subject: '과목',
+        title: '프로젝트 제안서 제출',
+        detail: '프로젝트 제안서를 제출하시오',
+        auther: '양은정',
+        color: '#ffa78c',
+        start: new Date(2018, 3, 3),
+        end: new Date(2018, 3, 7)
+      }],
+      '웹프로젝트': [],
+      '프로젝트 실무': []
+    },
+    assignmentsCardList: [],
+    selectedCard: null,
   }
 
   actions = {
-    selectSubject: (subject) => {
-      const newState = {
-        ...this.state.data,
+    setSubject: (subject) => {
+      this.setState({ ...this.state,
         selectedSubject: subject
-      }
-      this.setState({
-        data: newState
       });
     },
-    selectDate: (date) => {
-      const newState = {
-        ...this.state.data,
-        selectedDate: date
-      }
-      this.setState({
-        data: newState
+    setDate: (data) => {
+      this.setState({ ...this.state,
+        selectedDate: {
+          start: data.start,
+          end: data.end
+        }
       });
     },
     setAssignments: (assignments) => {
-      const newState = {
-        ...this.state.data,
+      this.setState({ ...this.state,
         assignments: assignments
-      }
-      this.setState({
-        data: newState
       });
     },
     setAssignmentsCardList: (assignments) => {
-      const newState = {
-        ...this.state.data,
+      this.setState({ ...this.state,
         assignmentsCardList: assignments
-      }
-      this.setState({
-        data: newState
       });
     },
-    modalClick: (id) => {
-      const newState = {
-        isModal: !this.state.modal.isModal,
-        id: id
-      }
-      this.setState({
-        modal: newState
+    setAssignmentsCard: (assignment) => {
+      this.setState({ ...this.state,
+        selectedCard: assignment
       });
     }
   }
