@@ -17,7 +17,7 @@ const initialState = {
     }]
   },
   assignmentsCardList: [],
-  selectedCard: null,
+  selectedAssignment: null,
 }
 
 const student = (state = initialState, action) => {
@@ -41,7 +41,7 @@ const student = (state = initialState, action) => {
       }
     case actionTypes.STUDENT_SELECT_ASSIGNMENT_CARD:
       return { ...state,
-        selectedCard: action.assignment
+        selectedAssignment: action.assignment
       }
     default : return state;
   }

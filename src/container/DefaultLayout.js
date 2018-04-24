@@ -23,12 +23,12 @@ class DefaultLayout extends Component {
     )
   }
   
-  renderModal = (state, actions, selectedCard) => {
+  renderModal = (state, actions, selectedAssignment) => {
     if(state.isModal) return (
       <Modal 
         state = {state} 
         actions = {actions} 
-        selectCard = { selectedCard }/>
+        selectedAssignment = { selectedAssignment }/>
     )
   }
 
@@ -37,7 +37,7 @@ class DefaultLayout extends Component {
     const location = browserHistory.getCurrentLocation().pathname;
     
     switch(location) {
-      case '/main' : 
+      case '/' : 
         return (
           <div>
             <SideMenu 
@@ -45,10 +45,10 @@ class DefaultLayout extends Component {
               selectedSubject = {this.props.studendSelectedSubject}
               selectSubject = {this.props.selectSubjectByStudent}
             />
-            {this.renderModal(state, actions, this.props.studentSelectedCard)}
+            {this.renderModal(state, actions, this.props.studentSelectedAssignment)}
           </div>
         )
-      case '/admin/main' : 
+      case '/admin' : 
         return ( 
           <div>
             <SideMenu 
@@ -56,7 +56,7 @@ class DefaultLayout extends Component {
               selectedSubject = {this.props.adminSelectedSubject}
               selectSubject = {this.props.selectSubjectByAdmin}
             />
-            {this.renderModal(state, actions, this.props.adminSelectedCard)}
+            {this.renderModal(state, actions, this.props.adminSelectedAssignment)}
           </div>
         )
       default : return;
@@ -68,10 +68,10 @@ const mapStateToProps= (state) => {
   return {
     studentSubjects: state.student.subjects,
     studendSelectedSubject: state.student.subjects[state.student.selectedSubject],
-    studentSelectedCard: state.student.selectedCard,
+    studentSelectedAssignment: state.student.selectedAssignment,
     adminSubjects: state.admin.subjects,
     adminSelectedSubject: state.admin.subjects[state.admin.selectedSubject],
-    adminSelectedCard: state.admin.selectedCard
+    adminSelectedAssignment: state.admin.selectedAssignment
   } 
 }
   

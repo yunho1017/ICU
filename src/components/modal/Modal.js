@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import * as actionTypes from '../../action/assignment';
 import AssignmentDetail from '../modal/AssignmentDetail';
 import Mypage from '../modal/MyPage';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import '../../css/modal.css';
 
 class Modal extends Component {
@@ -19,26 +16,16 @@ class Modal extends Component {
   }
 
   renderModal = () => {
+    console.log(this.props.selectedAssignment);
+    
     switch(this.props.state.id) {
       case 'mypage' :
         return <Mypage />
       case 'assignment' :
-        return <AssignmentDetail assignment = {this.props.selectedCard} />
+        return <AssignmentDetail assignment = {this.props.selectedAssignment} />
       default : return;
     }
   }
 }
 
-const mapStateToProps= (state) => {
-  return {
-    selectedDate: state.student.selectedDate,
-    assignments: state.student.assignments[state.student.subjects[state.student.selectedSubject]],
-    assignmentsCardList: state.student.assignmentsCardList,
-    selectedCard: state.student.selectedCard
-  } 
-}
-  
-const mapDispatchToProps= (dispatch) => {
-  return bindActionCreators({ ...actionTypes }, dispatch)
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default Modal;

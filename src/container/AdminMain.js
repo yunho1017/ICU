@@ -17,7 +17,7 @@ class AdminMain extends Component{
 
   renderChild = () => {
     switch(this.props.selected) {
-      case 0 :
+      case 0 : 
         return (
           <Calendar 
             selectDate = {(e) => console.log(e)} 
@@ -31,7 +31,7 @@ class AdminMain extends Component{
             assignments = {this.props.assignments} 
             selectedDate = {this.props.selectedDate}
             assignmentsCardList = {this.props.assignments}
-            selectAssignmentsCard = {this.props.selectAssignmentsCard}
+            selectAssignmentsCard = {this.props.selectAssignmentsCardByAdmin}
           />
         )
       default : return;
