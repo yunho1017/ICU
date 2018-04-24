@@ -1,43 +1,52 @@
 export const actionTypes = {
-  CREATE_ASSIGNMENT: 'CREATE_ASSIGNMENT',
-  SELECT_SUBJECT: 'SELECT_SUBJECT',
-  SELECT_DATE: 'SELECT_DATE',
-  SELECT_ASSIGNMENT_CARD: 'SELECT_ASSIGNMENT_CARD',
-  SET_ASSIGNMENTS: 'SET_ASSIGNMENTS',
-  SET_ASSIGNMENT_CARD_LIST: 'SET_ASSIGNMENT_CARD_LIST',
+  ADMIN_CREATE_ASSIGNMENT: 'ADMIN_CREATE_ASSIGNMENT',
+  ADMIN_SELECT_SUBJECT: 'ADMIN_SELECT_SUBJECT',
+  ADMIN_SELECT_DATE: 'ADMIN_SELECT_DATE',
+  STUDENT_SELECT_SUBJECT: 'STUDENT_SELECT_SUBJECT',
+  STUDENT_SELECT_DATE: 'STUDENT_SELECT_DATE',
+  STUDENT_SELECT_ASSIGNMENT_CARD: 'STUDENT_SELECT_ASSIGNMENT_CARD',
+  STUDENT_SET_ASSIGNMENTS: 'STUDENT_SET_ASSIGNMENTS',
+  STUDENT_SET_ASSIGNMENT_CARD_LIST: 'STUDENT_SET_ASSIGNMENT_CARD_LIST',
 }
 
-export const selectSubject = (subject) => {
+export const selectSubjectByAdmin = (subject) => {
   return {
-    type: actionTypes.SELECT_SUBJECT,
+    type: actionTypes.ADMIN_SELECT_SUBJECT,
     subject: subject
   }
 }
 
-export const selectDate = (date) => {
+export const selectSubjectByStudent = (subject) => {
   return {
-    type: actionTypes.SELECT_DATE,
+    type: actionTypes.STUDENT_SELECT_SUBJECT,
+    subject: subject
+  }
+}
+
+export const selectDateByStudent = (date) => {
+  return {
+    type: actionTypes.STUDENT_SELECT_DATE,
     date: date
   }
 }
 
-export const setAssignments = (assignments) => {
+export const setAssignmentsByStudent = (assignments) => {
   return {
-    type: actionTypes.SET_ASSIGNMENTS,
+    type: actionTypes.STUDENT_SET_ASSIGNMENTS,
     assignments: assignments
   }
 }
 
-export const setAssignmentsCardList = (assignments) => {
+export const setAssignmentsCardListByStudent = (assignments) => {
   return {
-    type: actionTypes.SET_ASSIGNMENT_CARD_LIST,
+    type: actionTypes.STUDENT_SET_ASSIGNMENT_CARD_LIST,
     assignments: assignments
   }
 }
 
-export const selectAssignmentsCard = (assignment) => {
+export const selectAssignmentsCardByStudent = (assignment) => {
   return {
-    type: actionTypes.SELECT_ASSIGNMENT_CARD,
+    type: actionTypes.STUDENT_SELECT_ASSIGNMENT_CARD,
     assignment: assignment
   }
 }

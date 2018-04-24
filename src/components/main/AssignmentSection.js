@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import '../../css/assignmentSection.css';
 
-const AssginmentSectionLayout = ({ assignmentsCardList, assignments, selectedDate, selectDate, selectEvent}) => {
+const AssginmentSectionLayout = ({ selectAssignmentsCard, assignmentsCardList, assignments, selectedDate, selectDate, selectEvent}) => {
   return (
     <div id="assignment-section">
       <Calendar 
@@ -18,6 +18,7 @@ const AssginmentSectionLayout = ({ assignmentsCardList, assignments, selectedDat
         assignments = {assignments}
         selectedDate = {selectedDate}
         assignmentsCardList = {assignmentsCardList}
+        selectAssignmentsCard = {selectAssignmentsCard}
       />
     </div>
   )
@@ -29,13 +30,13 @@ class AssignmentSection extends Component {
   }
 
   selectDate = (e) => {
-    this.props.selectDate(e);
+    this.props.selectDateByStudent(e);
     this.setAssignmentsCardList();
   }
   
   selectEvent = (e) => {
     this.props.modalActions.modalClick('assignment');
-    this.props.selectAssignmentsCard(e);
+    this.props.selectAssignmentsCardByStudent(e);
   }
   
   setAssignmentsCardList = () => {
@@ -53,7 +54,7 @@ class AssignmentSection extends Component {
         || (endDate >= selectedDate.start && endDate <= selectedDate.end)
         || (startDate <= selectedDate.start && endDate >= selectedDate.end ) : true) assignmentList.push(assignment);
         
-        return this.props.setAssignmentsCardList(assignmentList);
+        return this.props.setAssignmentsCardListByStudent(assignmentList);
       });
     }
 
@@ -64,6 +65,7 @@ class AssignmentSection extends Component {
           selectEvent = {this.selectEvent}
           assignments = {this.props.assignments}
           assignmentsCardList = {this.props.assignmentsCardList}
+          selectAssignmentsCard = {this.props.selectAssignmentsCardByStudent}
         />
       )
     }

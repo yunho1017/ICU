@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import * as actionTypes from '../../action/assignment';
 import AssignmentCard from './AssignmentCard';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import '../../css/assignmentContents.css';
 
 class AssignmentContents extends Component {
@@ -42,12 +39,4 @@ class AssignmentContents extends Component {
   }
 }
 
-const mapStateToProps= (state) => {
-  return { } 
-}
-
-const mapDispatchToProps= (dispatch) => {
-  return bindActionCreators({ ...actionTypes }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AssignmentContents);
+export default AssignmentContents;

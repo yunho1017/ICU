@@ -33,7 +33,9 @@ class DefaultLayout extends Component {
   }
 
   renderSidemenu = (state, actions) => {
+    //admin student 구분 : 추후에 리덕스로 구분 예정 (지금은 그냥 급한불끄기..)
     const location = browserHistory.getCurrentLocation().pathname;
+    
     switch(location) {
       case '/main' : 
         return (
@@ -41,18 +43,18 @@ class DefaultLayout extends Component {
             <SideMenu 
               subjects = {this.props.studentSubjects} 
               selectedSubject = {this.props.studendSelectedSubject}
-              selectSubject = {this.props.selectSubject}
+              selectSubject = {this.props.selectSubjectByStudent}
             />
             {this.renderModal(state, actions, this.props.studentSelectedCard)}
           </div>
         )
       case '/admin/main' : 
-        return (
+        return ( 
           <div>
             <SideMenu 
               subjects = {this.props.adminSubjects} 
               selectedSubject = {this.props.adminSelectedSubject}
-              selectSubject = {this.props.selectSubject}
+              selectSubject = {this.props.selectSubjectByAdmin}
             />
             {this.renderModal(state, actions, this.props.adminSelectedCard)}
           </div>

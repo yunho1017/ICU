@@ -17,6 +17,7 @@ class AssignmentList extends Component {
                 selectedDate = {this.props.selectedDate} 
                 modalActions = {actions}
                 assignmentsCardList = {this.props.assignmentsCardList}
+                selectAssignmentsCard = {this.props.selectAssignmentsCard}
               />
             </div>
           )

@@ -26,6 +26,7 @@ class SideMenu extends Component{
   }
 
   handleClick = (subject) => {
+    
     this.props.selectSubject(subject);
   }
 }

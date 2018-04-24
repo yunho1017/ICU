@@ -22,24 +22,24 @@ const initialState = {
 
 const student = (state = initialState, action) => {
   switch(action.type) {
-    case actionTypes.SELECT_SUBJECT: 
+    case actionTypes.STUDENT_SELECT_SUBJECT: 
       return { ...state,
         selectedSubject: action.subject,
         assignmentsCardList: []
       }
-    case actionTypes.SELECT_DATE:
+    case actionTypes.STUDENT_SELECT_DATE:
       return { ...state,
         selectedDate: action.date
       }
-    case actionTypes.SET_ASSIGNMENTS:
+    case actionTypes.STUDENT_SET_ASSIGNMENTS:
       return { ...state,
         assignments: action.assignments
       }
-    case actionTypes.SET_ASSIGNMENT_CARD_LIST:
+    case actionTypes.STUDENT_SET_ASSIGNMENT_CARD_LIST:
       return { ...state, 
         assignmentsCardList: action.assignments
       }
-    case actionTypes.SELECT_ASSIGNMENT_CARD:
+    case actionTypes.STUDENT_SELECT_ASSIGNMENT_CARD:
       return { ...state,
         selectedCard: action.assignment
       }
