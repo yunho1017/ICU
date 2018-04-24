@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import HeaderBtn from './HeaderBtn';
 import { browserHistory } from 'react-router';
+import HeaderBtn from './HeaderBtn';
 import '../../css/header.css';
 
 class Header extends Component {

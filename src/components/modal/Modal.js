@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Mypage from '../modal/MyPage';
-import AssignmentDetail from '../modal/AssignmentDetail';
-import '../../css/modal.css';
-import { connect } from 'react-redux';
 import * as actionTypes from '../../action/assignment';
+import AssignmentDetail from '../modal/AssignmentDetail';
+import Mypage from '../modal/MyPage';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import '../../css/modal.css';
 
 class Modal extends Component {
   render() {

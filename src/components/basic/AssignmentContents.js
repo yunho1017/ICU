@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import AssignmentCard from './AssignmentCard';
-import '../../css/assignmentContents.css';
-import { connect } from 'react-redux';
 import * as actionTypes from '../../action/assignment';
+import AssignmentCard from './AssignmentCard';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import '../../css/assignmentContents.css';
 
 class AssignmentContents extends Component {
   render() {

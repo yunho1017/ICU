@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import * as actionTypes from '../../action/assignment';
 import AssignmentList from './AssignmentList';
 import Calendar from '../basic/Calendar';
-import { connect } from 'react-redux';
-import * as actionTypes from '../../action/assignment';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import '../../css/assignmentSection.css';
 
 const AssginmentSectionLayout = ({ assignmentsCardList, assignments, selectedDate, selectDate, selectEvent}) => {
