@@ -10,11 +10,11 @@
 
 #modal {
   background-color: white;
-  width: 500px;
-  border-radius: 15px;
   position: fixed;
   left: 50%;
   top: 50%;
+  border: 1px solid #232227;
+  border-radius: 15px;
   transform: translate(-50%, -50%);
   z-index: 12;
 }

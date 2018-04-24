@@ -7,7 +7,7 @@ import '../../css/calendar.css';
 
 BigCalendar.momentLocalizer(moment);
 
-const Calendar = ({ state, selectDate, selectEvent }) => {
+const Calendar = ({ events, selectDate, selectEvent }) => {
   const eventStyleGetter = (event, start, end, isSelected) => {
     return { 
       style: { backgroundColor: event.color } 
@@ -25,7 +25,7 @@ const Calendar = ({ state, selectDate, selectEvent }) => {
           onSelectSlot = {selectDate}
           onSelectEvent = {selectEvent}
           eventPropGetter = {(eventStyleGetter)}
-          events = {state.assignments[state.subjects[state.selectedSubject]]}
+          events = {events}
         />
       </div>
     </div>

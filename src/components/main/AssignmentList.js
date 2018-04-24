@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import AssignmentContents from './AssignmentContents';
+import AssignmentContents from '../basic/AssignmentContents';
 import { ModalConsumer } from '../../context/ModalProvider';
 // import SelectedSubject from './SelectedSubject';
 import '../../css/assignmentList.css';
 
 class AssignmentList extends Component {
   render() {
-    const { state } = this.props;
     return (
       <ModalConsumer>
         {
@@ -14,14 +13,12 @@ class AssignmentList extends Component {
             <div id="assignment-list-section">
               {/* <SelectedSubject subject = {state.subjects[state.selectedSubject]} /> */}
               <AssignmentContents
-                assignments = {state.assignments[state.subjects[state.selectedSubject]]} 
-                selectedDate = {state.selectedDate} 
+                assignments = {this.props.assignments} 
+                selectedDate = {this.props.selectedDate} 
                 modalActions = {actions}
-                actions = {this.props.actions}
-                state = {this.props.state}
+                assignmentsCardList = {this.props.assignmentsCardList}
               />
-      </div>
-
+            </div>
           )
         }
       </ModalConsumer>

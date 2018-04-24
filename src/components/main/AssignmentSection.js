@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import AssignmentList from './AssignmentList';
-import Calendar from './Calendar';
+import Calendar from '../basic/Calendar';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../action/assignment';
+import { bindActionCreators } from 'redux';
 import '../../css/assignmentSection.css';
 
-const AssginmentSectionLayout = ({ actions, state, selectDate, selectEvent}) => {
+const AssginmentSectionLayout = ({ assignmentsCardList, assignments, selectedDate, selectDate, selectEvent}) => {
   return (
     <div id="assignment-section">
       <Calendar 
         selectDate = {selectDate} 
         selectEvent = {selectEvent} 
-        state = {state} 
+        events = {assignments} 
       />
-      <AssignmentList 
-        actions = {actions} 
-        state = {state} 
+      <AssignmentList
+        assignments = {assignments}
+        selectedDate = {selectedDate}
+        assignmentsCardList = {assignmentsCardList}
       />
     </div>
   )
@@ -25,19 +29,18 @@ class AssignmentSection extends Component {
   }
 
   selectDate = (e) => {
-    this.props.actions.setDate(e);
+    this.props.selectDate(e);
     this.setAssignmentsCardList();
   }
   
   selectEvent = (e) => {
-    const cardList = [e];
-    this.props.actions.setAssignmentsCardList(cardList);
+    this.props.modalActions.modalClick('assignment');
+    this.props.selectAssignmentsCard(e);
   }
   
   setAssignmentsCardList = () => {
-    const { state } = this.props;
-    const assignments = state.assignments[state.subjects[state.selectedSubject]]
-    const selectedDate = state.selectedDate;
+    const assignments = this.props.assignments;
+    const selectedDate = this.props.selectedDate;
     let assignmentList = [];
     
     assignments.map((assignment, index) => { 
@@ -50,21 +53,31 @@ class AssignmentSection extends Component {
         || (endDate >= selectedDate.start && endDate <= selectedDate.end)
         || (startDate <= selectedDate.start && endDate >= selectedDate.end ) : true) assignmentList.push(assignment);
         
-        return this.props.actions.setAssignmentsCardList(assignmentList);
+        return this.props.setAssignmentsCardList(assignmentList);
       });
     }
 
     render() {
       return (
-        <AssginmentSectionLayout 
-          actions = {this.props.actions}
-          state = {this.props.state}
+        <AssginmentSectionLayout
           selectDate = {this.selectDate}
           selectEvent = {this.selectEvent}
+          assignments = {this.props.assignments}
+          assignmentsCardList = {this.props.assignmentsCardList}
         />
       )
     }
   }
   
+const mapStateToProps= (state) => {
+  return {
+    selectedDate: state.student.selectedDate,
+    assignments: state.student.assignments[state.student.subjects[state.student.selectedSubject]],
+    assignmentsCardList: state.student.assignmentsCardList
+  } 
+}
   
-  export default AssignmentSection;
+const mapDispatchToProps= (dispatch) => {
+  return bindActionCreators({ ...actionTypes }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AssignmentSection);
