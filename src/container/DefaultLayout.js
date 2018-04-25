@@ -39,25 +39,25 @@ class DefaultLayout extends Component {
     switch(location) {
       case '/' : 
         return (
-          <div>
+          <>
             <SideMenu 
               subjects = {this.props.studentSubjects} 
               selectedSubject = {this.props.studendSelectedSubject}
               selectSubject = {this.props.selectSubjectByStudent}
             />
             {this.renderModal(state, actions, this.props.studentSelectedAssignment)}
-          </div>
+          </>
         )
       case '/admin' : 
         return ( 
-          <div>
+          <>
             <SideMenu 
               subjects = {this.props.adminSubjects} 
               selectedSubject = {this.props.adminSelectedSubject}
               selectSubject = {this.props.selectSubjectByAdmin}
             />
             {this.renderModal(state, actions, this.props.adminSelectedAssignment)}
-          </div>
+          </>
         )
       default : return;
     }
