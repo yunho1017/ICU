@@ -6,17 +6,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import '../../css/assignmentSection.css';
 
-const AssginmentSectionLayout = ({ selectAssignmentsCard, assignmentsCardList, assignments, selectedDate, selectDate, selectEvent}) => {
+const AssginmentSectionLayout = ({ selectAssignmentsCard, assignmentsCardList, assignments, selectedDate, selectDateHandler, selectEventHandler}) => {
   return (
     <div id="assignment-section">
       <Calendar 
-        selectDate = {selectDate} 
-        selectEvent = {selectEvent} 
+        selectDateHandler = {selectDateHandler} 
+        selectEventHandler = {selectEventHandler} 
         events = {assignments} 
       />
       <AssignmentList
         assignments = {assignments}
-        selectedDate = {selectedDate}
         assignmentsCardList = {assignmentsCardList}
         selectAssignmentsCard = {selectAssignmentsCard}
       />
@@ -29,14 +28,14 @@ class AssignmentSection extends Component {
     this.setAssignmentsCardList();
   }
 
-  selectDate = (e) => {
+  selectDateHandler = (e) => {
     this.props.selectDateByStudent(e);
     this.setAssignmentsCardList();
   }
   
-  selectEvent = (e) => {
+  selectEventHandler = (e) => {
     this.props.modalActions.modalClick(1);
-    this.props.selectAssignmentsCardByStudent(e);
+    this.props.selectAssignmentsByStudent(e);
   }
   
   setAssignmentsCardList = () => {
@@ -48,34 +47,34 @@ class AssignmentSection extends Component {
       let startDate = new Date(assignment.start);
       let endDate = new Date(assignment.end);
       endDate.setDate(endDate.getDate() - 1);
-      
+
       if(!!selectedDate ? 
         (startDate >= selectedDate.start && startDate <= selectedDate.end) 
         || (endDate >= selectedDate.start && endDate <= selectedDate.end)
         || (startDate <= selectedDate.start && endDate >= selectedDate.end ) : true) assignmentList.push(assignment);
         
         return this.props.setAssignmentsCardListByStudent(assignmentList);
-      });
-    }
-
-    render() {
-      return (
-        <AssginmentSectionLayout
-          selectDate = {this.selectDate}
-          selectEvent = {this.selectEvent}
-          assignments = {this.props.assignments}
-          assignmentsCardList = {this.props.assignmentsCardList}
-          selectAssignmentsCard = {this.props.selectAssignmentsCardByStudent}
-        />
-      )
-    }
+    });
   }
+
+  render() {
+    return (
+      <AssginmentSectionLayout
+        selectDateHandler = {this.selectDateHandler}
+        selectEventHandler = {this.selectEventHandler}
+        assignments = {this.props.assignments}
+        assignmentsCardList = {this.props.assignmentsCardList}
+        selectAssignmentsCard = {this.props.selectAssignmentsByStudent}
+      />
+    )
+  }
+}
   
 const mapStateToProps= (state) => {
   return {
-    selectedDate: state.student.selectedDate,
     assignments: state.student.assignments[state.student.subjects[state.student.selectedSubject]],
-    assignmentsCardList: state.student.assignmentsCardList
+    assignmentsCardList: state.student.assignmentsCardList,
+    selectedDate: state.student.selectedDate
   } 
 }
   

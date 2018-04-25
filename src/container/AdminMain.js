@@ -23,12 +23,17 @@ class AdminMain extends Component{
   }
 
   renderChild = (modalActions) => {
+    const selectEventHandler = (e) => {
+      modalActions.modalClick(3);
+      this.props.selectAssignmentsByAdmin(e);
+    }
+
     switch(this.props.selected) {
       case 0 : 
         return (
           <Calendar 
-            selectDate = {(e) => console.log(e)} 
-            selectEvent = {(e) => console.log(e)} 
+            selectDateHandler = {(e) => console.log(e)} 
+            selectEventHandler  = {selectEventHandler} 
             events = {this.props.assignments} 
           />
         )
@@ -36,9 +41,8 @@ class AdminMain extends Component{
         return (
           <AssignmentContents 
             assignments = {this.props.assignments} 
-            selectedDate = {this.props.selectedDate}
             assignmentsCardList = {this.props.assignments}
-            selectAssignmentsCard = {this.props.selectAssignmentsCardByAdmin}
+            selectAssignmentsCard = {this.props.selectAssignmentsByAdmin}
             modalActions = {modalActions}
             modalId = {2}
           />

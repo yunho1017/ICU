@@ -21,7 +21,7 @@ class AssignmentContents extends Component {
       return <AssignmentCard 
                 key = {assignment.key}
                 assignment = {assignment}
-                handleEvent = {this.selectCard} 
+                handleEvent = {this.selectCardHandler} 
                 styles = {styles}
                 start = {this.getDateFormat(startDate)}
                 end = {this.getDateFormat(endDate)}
@@ -29,7 +29,7 @@ class AssignmentContents extends Component {
     })
   }
 
-  selectCard = (assignment) => {
+  selectCardHandler = (assignment) => {
     this.props.modalActions.modalClick(this.props.modalId);
     this.props.selectAssignmentsCard(assignment);
   }

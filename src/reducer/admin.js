@@ -26,7 +26,7 @@ const admin = (state = initialState, action) => {
         selectedSubject: action.subject,
         assignmentsCardList: []
       }
-    case actionTypes.ADMIN_SELECT_ASSIGNMENT_CARD:
+    case actionTypes.ADMIN_SELECT_ASSIGNMENT:
       return { ...state,
         selectedAssignment: action.assignment
       }

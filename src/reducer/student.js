@@ -39,7 +39,7 @@ const student = (state = initialState, action) => {
       return { ...state, 
         assignmentsCardList: action.assignments
       }
-    case actionTypes.STUDENT_SELECT_ASSIGNMENT_CARD:
+    case actionTypes.STUDENT_SELECT_ASSIGNMENT:
       return { ...state,
         selectedAssignment: action.assignment
       }

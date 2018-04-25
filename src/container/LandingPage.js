@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class RendingPage extends Component{
+class LaningPage extends Component{
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class RendingPage extends Component{
   }
 }
 
-export default RendingPage;
+export default LaningPage;

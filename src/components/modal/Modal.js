@@ -28,7 +28,9 @@ class Modal extends Component {
       case 1 :
         return <AssignmentDetail assignment = {this.props.selectedAssignment} />
       case 2 :
-      return <AssignmentDetail assignment = {this.props.selectedAssignment} />
+        return <AssignmentDetail assignment = {this.props.selectedAssignment} />
+      case 3 :
+        return <AssignmentDetail assignment = {this.props.selectedAssignment} />
       default : return;
     }
   }
