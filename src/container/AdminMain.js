@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
+import * as actionTypes from '../action/assignment';
 import Calendar from '../components/basic/Calendar';
 import { connect } from 'react-redux';
-import * as actionTypes from '../action/assignment';
 import { bindActionCreators } from 'redux';
-import '../css/main.css';
+import { ModalConsumer } from '../context/ModalProvider';
 import AssignmentContents from '../components/basic/AssignmentContents';
+import '../css/main.css';
 
 class AdminMain extends Component{
   render() {
     return (
-      <div id="main-section">
-        {this.renderChild()}
-      </div>
+      <ModalConsumer>
+        {
+          ({ actions }) => (
+            <div id="main-section">
+              {this.renderChild(actions)}
+            </div>
+          )
+        }
+      </ModalConsumer>
     )
   }
 
-  renderChild = () => {
+  renderChild = (modalActions) => {
     switch(this.props.selected) {
       case 0 : 
         return (
@@ -32,6 +39,8 @@ class AdminMain extends Component{
             selectedDate = {this.props.selectedDate}
             assignmentsCardList = {this.props.assignments}
             selectAssignmentsCard = {this.props.selectAssignmentsCardByAdmin}
+            modalActions = {modalActions}
+            modalId = {2}
           />
         )
       default : return;

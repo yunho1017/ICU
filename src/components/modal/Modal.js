@@ -16,11 +16,19 @@ class Modal extends Component {
   }
 
   renderModal = () => {
+    /* 
+    0 => mypage 
+    1 => 학생용 모달 
+    2 => 선생님용 모달
+    3 => 선생님용 모달 수정 버전
+    */
     switch(this.props.state.id) {
-      case 'mypage' :
+      case 0 :
         return <Mypage />
-      case 'assignment' :
+      case 1 :
         return <AssignmentDetail assignment = {this.props.selectedAssignment} />
+      case 2 :
+      return <AssignmentDetail assignment = {this.props.selectedAssignment} />
       default : return;
     }
   }

@@ -35,7 +35,7 @@ class AssignmentSection extends Component {
   }
   
   selectEvent = (e) => {
-    this.props.modalActions.modalClick('assignment');
+    this.props.modalActions.modalClick(1);
     this.props.selectAssignmentsCardByStudent(e);
   }
   

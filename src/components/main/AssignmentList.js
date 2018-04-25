@@ -18,6 +18,7 @@ class AssignmentList extends Component {
                 modalActions = {actions}
                 assignmentsCardList = {this.props.assignmentsCardList}
                 selectAssignmentsCard = {this.props.selectAssignmentsCard}
+                modalId = {1}
               />
             </div>
           )

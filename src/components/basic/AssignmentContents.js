@@ -29,8 +29,8 @@ class AssignmentContents extends Component {
     })
   }
 
-  selectCard = (id, assignment) => {
-    this.props.modalActions.modalClick(id);
+  selectCard = (assignment) => {
+    this.props.modalActions.modalClick(this.props.modalId);
     this.props.selectAssignmentsCard(assignment);
   }
 
