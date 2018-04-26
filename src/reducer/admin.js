@@ -4,7 +4,8 @@ const initialState = {
   subjects: ['과제 업로드', '과제 다운로드'],
   selectedSubject: 0,
   selectedDate: {
-    start: new Date()
+    start: new Date(),
+    end: new Date()
   },
   assignments: [{
     key: 123,
@@ -25,6 +26,10 @@ const admin = (state = initialState, action) => {
       return { ...state,
         selectedSubject: action.subject,
         assignmentsCardList: []
+      }
+    case actionTypes.ADMIN_SELECT_DATE:
+      return { ...state,
+        selectedDate: action.date
       }
     case actionTypes.ADMIN_SELECT_ASSIGNMENT:
       return { ...state,

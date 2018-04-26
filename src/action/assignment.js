@@ -17,6 +17,13 @@ export const selectSubjectByAdmin = (subject) => {
   }
 }
 
+export const selectDateByAdmin = (date) => {
+  return {
+    type: actionTypes.ADMIN_SELECT_DATE,
+    date: date
+  }
+}
+
 export const selectAssignmentsByAdmin = (assignment) => {
   return {
     type: actionTypes.ADMIN_SELECT_ASSIGNMENT,

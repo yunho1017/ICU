@@ -44,3 +44,7 @@
 .rbc-month-header .rbc-header {
   padding: 5px 0;
 }
+
+.selected-slot {
+  background-color: blue;
+}

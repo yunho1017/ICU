@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as actionTypes from '../action/assignment';
 import Calendar from '../components/basic/Calendar';
+import CreateAssignment from '../components/admin/CreateAssignment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ModalConsumer } from '../context/ModalProvider';
@@ -8,6 +9,7 @@ import AssignmentContents from '../components/basic/AssignmentContents';
 import '../css/main.css';
 
 class AdminMain extends Component{
+  
   render() {
     return (
       <ModalConsumer>
@@ -28,14 +30,24 @@ class AdminMain extends Component{
       this.props.selectAssignmentsByAdmin(e);
     }
 
+    const selectDateHandler = (e) => {
+      this.props.selectDateByAdmin(e);
+    }
+
     switch(this.props.selected) {
       case 0 : 
         return (
-          <Calendar 
-            selectDateHandler = {(e) => console.log(e)} 
-            selectEventHandler  = {selectEventHandler} 
-            events = {this.props.assignments} 
-          />
+          <React.Fragment>
+            <Calendar 
+              selectDateHandler = {selectDateHandler} 
+              selectEventHandler  = {selectEventHandler} 
+              events = {this.props.assignments} 
+              selectedDate = {this.props.selectedDate}
+            />
+            <CreateAssignment
+              selectedDate = {this.props.selectedDate}
+            />
+          </React.Fragment>
         )
       case 1 : 
         return (
@@ -55,7 +67,8 @@ class AdminMain extends Component{
 const mapStateToProps= (state) => {
   return {
     assignments: state.admin.assignments,
-    selected: state.admin.selectedSubject
+    selected: state.admin.selectedSubject,
+    selectedDate: state.admin.selectedDate
   } 
 }
   

@@ -21,6 +21,7 @@ class Modal extends Component {
     1 => 학생용 모달 
     2 => 선생님용 모달
     3 => 선생님용 모달 수정 버전
+    4 => 과제 다운로드 모달
     */
     switch(this.props.state.id) {
       case 0 :

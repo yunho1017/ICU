@@ -2,10 +2,10 @@ import React from 'react';
 import '../../css/assignmentCard.css';
 
 const AssignmentCard = ({ start, end, assignment, styles, handleEvent }) => {
-  let startDate = start;
-  let endDate = end;
-  if (startDate === endDate) endDate = '';
+  const startDate = start;
+  const endDate = startDate === end ? '' : end;
   const time = !!endDate ? '~' : '';
+  
   return (
     <div className="assginment-card-wrapper" style = {styles} onClick = {() => handleEvent(assignment)}>
       <div className="card-header">
