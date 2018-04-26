@@ -26,6 +26,7 @@ const AssginmentSectionLayout = ({ selectAssignmentsCard, assignmentsCardList, a
 
 class AssignmentSection extends Component {
   componentDidMount() {
+    this.props.setDateByStudent();
     this.setAssignmentsCardList();
   }
 
@@ -42,8 +43,8 @@ class AssignmentSection extends Component {
   setAssignmentsCardList = () => {
     const assignments = this.props.assignments;
     let selectedDate = this.props.selectedDate;
-    selectedDate.start.setHours(0,0,0,0);
-    selectedDate.end.setHours(0,0,0,0);
+    console.log(selectedDate);
+    
     let assignmentList = [];
     
     assignments.map((assignment, index) => { 
@@ -79,8 +80,7 @@ const mapStateToProps= (state) => {
   return {
     assignments: state.student.assignments[state.student.subjects[state.student.selectedSubject]],
     assignmentsCardList: state.student.assignmentsCardList,
-    selectedDate: state.student.selectedDate,
-    state: state.student
+    selectedDate: state.student.selectedDate
   } 
 }
   

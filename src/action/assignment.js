@@ -1,13 +1,21 @@
 export const actionTypes = {
+  ADMIN_SET_DATE: 'ADMIN_SET_DATE',
   ADMIN_CREATE_ASSIGNMENT: 'ADMIN_CREATE_ASSIGNMENT',
   ADMIN_SELECT_SUBJECT: 'ADMIN_SELECT_SUBJECT',
   ADMIN_SELECT_DATE: 'ADMIN_SELECT_DATE',
   ADMIN_SELECT_ASSIGNMENT: 'ADMIN_SELECT_ASSIGNMENT',
+  STUDENT_SET_DATE: 'STUDENTS_SET_DATE',
   STUDENT_SELECT_SUBJECT: 'STUDENT_SELECT_SUBJECT',
   STUDENT_SELECT_DATE: 'STUDENT_SELECT_DATE',
   STUDENT_SELECT_ASSIGNMENT: 'STUDENT_SELECT_ASSIGNMENT',
   STUDENT_SET_ASSIGNMENTS: 'STUDENT_SET_ASSIGNMENTS',
   STUDENT_SET_ASSIGNMENT_CARD_LIST: 'STUDENT_SET_ASSIGNMENT_CARD_LIST',
+}
+
+export const setDateByAdmin = () => {
+  return {
+    type: actionTypes.ADMIN_SET_DATE
+  }
 }
 
 export const selectSubjectByAdmin = (subject) => {
@@ -30,6 +38,13 @@ export const selectAssignmentsByAdmin = (assignment) => {
     assignment: assignment
   }
 }
+
+export const setDateByStudent = () => {
+  return {
+    type: actionTypes.STUDENT_SET_DATE
+  }
+}
+
 
 export const selectSubjectByStudent = (subject) => {
   return {

@@ -35,6 +35,16 @@ const initialState = {
 
 const student = (state = initialState, action) => {
   switch(action.type) {
+    case actionTypes.STUDENT_SET_DATE:
+      let defaultDate = {
+        start: new Date(state.selectedDate.start),
+        end: new Date(state.selectedDate.end)
+      }
+      defaultDate.start.setHours(0,0,0);
+      defaultDate.end.setHours(0,0,0);
+      return { ...state,
+        selectedDate: defaultDate
+      }
     case actionTypes.STUDENT_SELECT_SUBJECT: 
       return { ...state,
         selectedSubject: action.subject,
