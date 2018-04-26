@@ -1,10 +1,10 @@
 #assignment-contents-wrapper {
-  width: calc( 100% - 30px);
+  width: calc( 100% - 20px);
   background-color: white;
   /* height: calc( 100% - 90px); */
   height: calc( 100% - 20px );
   border-radius: 10px;
-  padding: 20px 10px 0 20px;
+  padding: 20px 0 0 20px;
   overflow: scroll;
   display: inline-block;
   overflow: scroll;
