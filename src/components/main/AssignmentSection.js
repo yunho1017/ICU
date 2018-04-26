@@ -25,8 +25,8 @@ const AssginmentSectionLayout = ({ selectAssignmentsCard, assignmentsCardList, a
 }
 
 class AssignmentSection extends Component {
-  componentDidMount() {
-    this.props.setDateByStudent();
+  async componentDidMount() {
+    await this.props.setDateByStudent();
     this.setAssignmentsCardList();
   }
 
@@ -43,7 +43,6 @@ class AssignmentSection extends Component {
   setAssignmentsCardList = () => {
     const assignments = this.props.assignments;
     let selectedDate = this.props.selectedDate;
-    console.log(selectedDate);
     
     let assignmentList = [];
     
