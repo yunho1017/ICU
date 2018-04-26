@@ -1,25 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../css/createAssignment.css';
 
-class CreateAssignment extends Component {
-  render() {
-    const { selectedDate } = this.props;
-    const startDate = selectedDate.start;
-    const endDate = startDate === selectedDate.end ? '' : selectedDate.end;
-    console.log(startDate === selectedDate.end);
-    
-    const time = !!endDate ? '~' : '';
+const CreateAssignment = ({ selectedDate: { start: startDate }, selectedDate: { end: endDate } }) => {
+  const isOneDay = startDate === endDate;
 
-    return (
-      <div id = "create-assignment-section">
-        {startDate + ' ' + time + ' ' + endDate}
-      </div>
-    )
-  }
-
-  getDateFormat = (date) => {
-    return (date.getMonth() + 1) + '/' + (date.getDate());
-  }
+  return (
+    <div id = "create-assignment-section">
+      {isOneDay ? `${startDate}` : `${startDate} ~ ${endDate}`}
+    </div>
+  )
 }
 
 export default CreateAssignment;

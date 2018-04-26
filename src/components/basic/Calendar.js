@@ -36,18 +36,17 @@ class Calendar extends Component {
   } 
   
   dateCellWrapper = ({ value, children }) => {
-    const start = this.props.selectedDate.start;
-    const end = this.props.selectedDate.end;
-    const width = "14.28571429%";
+    const { start, end } = this.props.selectedDate;
+
+
     const style = {
       backgroundColor: '#e5e5e5',
       WebkitFlexBasis: '14.28571429%',
       flexBasis: '14.28571429%',
-      maxWidth: '14.28571429%',
       borderLeft: '1px solid #DDD'
     };
-    if(start <= value && value <= end) return <div style={style}>{children}</div>
-    return children;
+
+    return (start <= value && value <= end) ? <div style={style}>{children}</div> : children;
   }
 
   render() {
@@ -77,11 +76,7 @@ class CustomToolbar extends Toolbar {
     );
   }
 
-  navigate = action => {
-    console.log(action);
-    
-    this.props.onNavigate(action)
-  }
+  navigate = action => this.props.onNavigate(action);
 }
 
 export default Calendar;

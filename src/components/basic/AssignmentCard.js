@@ -1,15 +1,13 @@
 import React from 'react';
 import '../../css/assignmentCard.css';
 
-const AssignmentCard = ({ start, end, assignment, styles, handleEvent }) => {
-  const startDate = start;
-  const endDate = startDate === end ? '' : end;
-  const time = !!endDate ? '~' : '';
+const AssignmentCard = ({ start: startDate, end: endDate, assignment, styles, handleEvent }) => {
+  const isOneDay = startDate === endDate;
   
   return (
     <div className="assginment-card-wrapper" style = {styles} onClick = {() => handleEvent(assignment)}>
       <div className="card-header">
-        <div className="selected-date"> {startDate + ' ' + time + ' ' + endDate}</div>
+        <div className="selected-date"> {isOneDay ? `${startDate}` : `${startDate} ~ ${endDate}`}</div>
         <div className="card-title">{assignment.title}</div>
       </div>
       <div className="assginment-detail">{assignment.detail}</div>

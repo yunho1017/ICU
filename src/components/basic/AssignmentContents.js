@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import AssignmentCard from './AssignmentCard';
 import '../../css/assignmentContents.css';
+import { getDateFormat } from '../../common';
 
 class AssignmentContents extends Component {
+  constructor(props) {
+    super(props);
+
+    this.getDateFormat = getDateFormat.bind(this);
+  }
+
   render() {
     return (
       <div id="assignment-contents-wrapper">
@@ -31,10 +38,6 @@ class AssignmentContents extends Component {
   selectCardHandler = (assignment) => {
     this.props.modalActions.modalClick(this.props.modalId);
     this.props.selectAssignmentsCard(assignment);
-  }
-
-  getDateFormat = (date) => {
-    return (date.getMonth() + 1) + '/' + (date.getDate());
   }
 }
 
