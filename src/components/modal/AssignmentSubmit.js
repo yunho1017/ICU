@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/assignmentDetail.css';
 
-const AssignmentSubmit = ({}) => {
+const AssignmentSubmit = ({ submitEventHandler }) => {
   return (
     <React.Fragment> 
       <div id="assignment-file-secion">
