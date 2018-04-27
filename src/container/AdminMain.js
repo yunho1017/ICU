@@ -56,7 +56,7 @@ class AdminMain extends Component{
             assignmentsCardList = {this.props.assignments}
             selectAssignmentsCard = {this.props.selectAssignmentsByAdmin}
             modalActions = {modalActions}
-            modalId = {2}
+            modalId = {4}
           />
         )
       default : return;

@@ -27,22 +27,11 @@ class Modal extends Component {
       case 0 :
         return <Mypage />
 
-      case 1 :
+      case 1 : case 2 : case 3 : case 4:
         return <AssignmentDetail 
                 assignment = {this.props.selectedAssignment} 
                 onClickHandler = {this.modalClose}
-               />
-
-      case 2 :
-        return <AssignmentDetail 
-                assignment = {this.props.selectedAssignment}
-                onClickHandler = {this.modalClose} 
-               />
-
-      case 3 :
-        return <AssignmentDetail 
-                assignment = {this.props.selectedAssignment} 
-                onClickHandler = {this.modalClose}
+                id = {this.props.state.id}
                />
 
       default : return;
