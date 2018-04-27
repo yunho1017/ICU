@@ -8,9 +8,9 @@ const student = (state = studentDefaultState, action) => {
         start: new Date(state.selectedDate.start),
         end: new Date(state.selectedDate.end)
       };
-
       defaultDate.start.setHours(0,0,0,0);
       defaultDate.end.setHours(0,0,0,0);
+      
       return { ...state,
         selectedDate: defaultDate
       }
