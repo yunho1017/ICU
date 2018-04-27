@@ -5,9 +5,9 @@
 }
 
 .assignment-modal-top-bottm {
-  width: calc(100% - 40px);
+  width: calc(100% - 20px);
   background-color: #f6f7f9;
-  padding: 10px 20px;
+  padding: 10px;
   height: 40px;
 }
 
@@ -24,7 +24,7 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
-  margin: 10px 0;
+  margin: 10px 10px 10px 0;
 }
 
 .assignment-detail-wrapper {
@@ -54,7 +54,7 @@
   font-size: 13px;
 }
 
-#assignment-file-secion {
+.assignment-mode-secion {
   width: calc(100% - 80px);
   border-radius: 10px;
   background-color: #f6f7f9;
@@ -62,7 +62,7 @@
   padding: 10px;
 }
 
-#assignment-file-secion p {
+.assignment-mode-secion p {
   margin: 0 0 10px 5px;
   font-size: 15px;
 }
@@ -80,4 +80,5 @@
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16);
   border-radius: 10px;
   color: white;
+  margin-right: 10px;
 }

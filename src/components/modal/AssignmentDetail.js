@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getDateFormat } from '../../common';
 import AssignmentSubmit from './AssignmentSubmit';
+import AssignmentDownload from './AssignmentDownload';
 import '../../css/assignmentDetail.css';
 
 class AssignmentDetail extends Component {
@@ -65,7 +66,7 @@ class AssignmentDetail extends Component {
         return <AssignmentSubmit />
 
       case 4 : 
-        return <AssignmentSubmit />
+        return <AssignmentDownload />
 
       default : return;
     }

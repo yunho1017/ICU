@@ -4,7 +4,7 @@ import '../../css/assignmentDetail.css';
 const AssignmentSubmit = ({ submitEventHandler }) => {
   return (
     <React.Fragment> 
-      <div id="assignment-file-secion">
+      <div className="assignment-mode-secion">
         <p>파일 첨부하기</p>
         <input type="file"/>
       </div>
