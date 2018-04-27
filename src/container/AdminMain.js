@@ -9,7 +9,6 @@ import AssignmentContents from '../components/basic/AssignmentContents';
 import '../css/main.css';
 
 class AdminMain extends Component{
-  
   render() {
     return (
       <ModalConsumer>
@@ -22,6 +21,10 @@ class AdminMain extends Component{
         }
       </ModalConsumer>
     )
+  }
+
+  async componentDidMount() {
+    await this.props.setDateByAdmin();
   }
 
   renderChild = (modalActions) => {

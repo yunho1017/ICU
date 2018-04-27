@@ -51,14 +51,14 @@ class Main extends Component {
   setAssignmentsCardList = () => {
     const assignments = this.props.assignments;
     let selectedDate = {
-      start: new Date(this.props.selectedDate.start),
-      end: new Date(this.props.selectedDate.end)
+      start: new Date(this.props.selectedDate.start).getTime(),
+      end: new Date(this.props.selectedDate.end).getTime()
     }
     let assignmentList = [];
 
     assignmentList = assignments.filter((assignment, index) => { 
-      const startDate = new Date(assignment.start);
-      const endDate = new Date(assignment.end);
+      const startDate = new Date(assignment.start).getTime();
+      const endDate = new Date(assignment.end).getTime();
 
       if((startDate >= selectedDate.start && startDate <= selectedDate.end) 
         || (endDate >= selectedDate.start && endDate <= selectedDate.end)
