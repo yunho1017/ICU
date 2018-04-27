@@ -15,6 +15,7 @@ const CalendarLayout = ({events, selectDateHandler, selectEventHandler, eventPro
           selectable
           events = {events}
           views = {['month']}
+          defaultDate = { new Date() }
           onSelectSlot = {selectDateHandler}
           onSelectEvent = {selectEventHandler}
           eventPropGetter = {eventPropGetter}
