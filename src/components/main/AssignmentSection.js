@@ -42,19 +42,22 @@ class AssignmentSection extends Component {
   
   setAssignmentsCardList = () => {
     const assignments = this.props.assignments;
-    let selectedDate = this.props.selectedDate;
-    
+    let selectedDate = {
+      start: new Date(this.props.selectedDate.start),
+      end: new Date(this.props.selectedDate.end)
+    }
     let assignmentList = [];
 
     assignmentList = assignments.filter((assignment, index) => { 
-      let startDate = new Date(assignment.start);
-      let endDate = new Date(assignment.end);
-      
+      const startDate = new Date(assignment.start);
+      const endDate = new Date(assignment.end);
+
       if((startDate >= selectedDate.start && startDate <= selectedDate.end) 
         || (endDate >= selectedDate.start && endDate <= selectedDate.end)
         || (startDate <= selectedDate.start && endDate >= selectedDate.end )) return true;
-    });
 
+      return false;
+    });
     return this.props.setAssignmentsCardListByStudent(assignmentList);
   }
 

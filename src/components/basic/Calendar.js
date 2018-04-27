@@ -30,6 +30,10 @@ const CalendarLayout = ({events, selectDateHandler, selectEventHandler, eventPro
 } 
 
 class Calendar extends Component {
+  state = {
+    selectedStyle: { backgroundColor: '#eaf6ff' }
+  }
+
   eventPropGetter = (event, start, end, isSelected) => {
     return { 
       style: { backgroundColor: event.color } 
@@ -39,15 +43,7 @@ class Calendar extends Component {
   dateCellWrapper = ({ value, children }) => {
     const { start, end } = this.props.selectedDate;
 
-
-    const style = {
-      backgroundColor: '#e5e5e5',
-      WebkitFlexBasis: '14.28571429%',
-      flexBasis: '14.28571429%',
-      borderLeft: '1px solid #DDD'
-    };
-
-    return (start <= value && value <= end) ? <div style={style}>{children}</div> : children;
+    return (start <= value && value <= end) ? <div className="rbc-day-bg" style={this.state.selectedStyle}>{children}</div> : children
   }
 
   render() {

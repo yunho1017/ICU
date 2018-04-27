@@ -45,8 +45,8 @@ export const adminDefaultState = {
         detail: '프로젝트 제안서를 제출하시오',
         auther: '양은정',
         color: '#ffa78c',
-        start: new Date(2018, 3, 26),
-        end: new Date(2018, 3, 26)
+        start: new Date(2018, 3, 27),
+        end: new Date(2018, 3, 27)
       }]
     },
     assignmentsCardList: [],

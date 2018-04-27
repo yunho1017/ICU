@@ -7,7 +7,7 @@ class Modal extends Component {
   render() {
     return (
       <div>
-        <div id="modal-overlay" onClick={() => this.props.actions.modalClick('')}></div>
+        <div id="modal-overlay" onClick={this.modalClose} ></div>
         <div id="modal">
         { this.renderModal() }
         </div>
@@ -26,15 +26,30 @@ class Modal extends Component {
     switch(this.props.state.id) {
       case 0 :
         return <Mypage />
+
       case 1 :
-        return <AssignmentDetail assignment = {this.props.selectedAssignment} />
+        return <AssignmentDetail 
+                assignment = {this.props.selectedAssignment} 
+                onClickHandler = {this.modalClose}
+               />
+
       case 2 :
-        return <AssignmentDetail assignment = {this.props.selectedAssignment} />
+        return <AssignmentDetail 
+                assignment = {this.props.selectedAssignment}
+                onClickHandler = {this.modalClose} 
+               />
+
       case 3 :
-        return <AssignmentDetail assignment = {this.props.selectedAssignment} />
+        return <AssignmentDetail 
+                assignment = {this.props.selectedAssignment} 
+                onClickHandler = {this.modalClose}
+               />
+
       default : return;
     }
   }
+
+  modalClose = _ => this.props.actions.modalClick('')
 }
 
 export default Modal;
