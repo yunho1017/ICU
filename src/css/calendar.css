@@ -17,10 +17,6 @@
   cursor: pointer;
 }
 
-.rbc-date-cell a{
-  margin: 5px 5px 0 0;
-}
-
 .rbc-calendar{
   width: 100%;
   height: calc( 100% - 20px );
@@ -45,6 +41,16 @@
   padding: 5px 0;
 }
 
-.selected-slot {
-  background-color: blue;
+.rbc-toolbar .rbc-toolbar-label {
+  font-size: 23px;
+  text-align: right;
+  float: left;
+}
+
+.rbc-toolbar .rbc-btn-group {
+  float: right;
+}
+
+.rbc-calendar .rbc-toolbar {
+  display: inline-block;
 }

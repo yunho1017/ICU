@@ -7,17 +7,9 @@
 .assignment-modal-top-bottm {
   width: calc(100% - 40px);
   background-color: #f6f7f9;
-  padding: 20px;
-}
-
-.top {
-  height: 20px;
-}
-
-.bottom {
+  padding: 10px 20px;
   height: 40px;
 }
-
 
 .assignment-modal-top-bottm:first-child {
   border-bottom: solid 1px rgba(0, 0, 0, 0.12);
@@ -32,21 +24,34 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
+  margin: 10px 0;
 }
 
-.assignment-detail-info {
+.assignment-detail-wrapper {
   margin-bottom: 20px;
+  width: 100%;
+}
+
+.assignment-detail-info-title {
+  margin-bottom: 10px;
+  font-size: 15px;
 }
 
 #assignment-modal-contents-wrapper {
   width: calc(100% - 140px);
+  max-height: 400px;
   background-color: white;
   padding: 30px 70px;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  overflow: scroll;
 }
 
-#assignment-detail-contents {
-  width: 100%;
+.assignment-detail-contents {
+  padding: 10px;
+  width: calc(100% - 20px);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: #f6f7f9;
+  font-size: 13px;
 }
 
 #assignment-file-secion {
@@ -69,6 +74,7 @@
   width: 100px;
   line-height: 40px;
   text-align: center;
+  font-size: 15px;
   cursor: pointer;
   background-color: #83bdd0;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16);

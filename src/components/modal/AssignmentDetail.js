@@ -16,12 +16,27 @@ class AssignmentDetail extends Component {
           />
         </div>
         <div id="assignment-modal-contents-wrapper">
-          <div className="assignment-detail-info">과제 명 : {assignment.title} </div>
-          <div className="assignment-detail-info">작성자 : {assignment.auther} </div>
-          <div className="assignment-detail-info">기간 : {getDateFormat(assignment.start) + ' ~ ' + getDateFormat(assignment.end)} </div>
-          <div className="assignment-detail-info"> 
-            <div className="assignment-detail-info">설명</div>
-            <div id="assignment-detail-info">
+          <div className="assignment-detail-wrapper">
+            <div className="assignment-detail-info-title">과제명</div>  
+            <div className="assignment-detail-contents">
+              {assignment.title} 
+            </div>
+          </div>
+          <div className="assignment-detail-wrapper">
+            <div className="assignment-detail-info-title">작성자</div> 
+            <div className="assignment-detail-contents">
+              {assignment.auther} 
+            </div> 
+          </div>
+          <div className="assignment-detail-wrapper">
+            <div className="assignment-detail-info-title">기간</div>
+            <div className="assignment-detail-contents">
+              {getDateFormat(assignment.start) + ' ~ ' + getDateFormat(assignment.end)} 
+            </div>
+           </div>
+          <div className="assignment-detail-wrapper"> 
+            <div className="assignment-detail-info-title">설명</div>
+            <div className="assignment-detail-contents">
               {assignment.detail} 
             </div>
           </div>
