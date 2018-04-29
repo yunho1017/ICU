@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getDateFormat } from '../../common';
-import AssignmentSubmit from './AssignmentSubmit';
-import AssignmentDownload from './AssignmentDownload';
+import AssignmentByStudent from './AssignmentByStudent';
+import AssignmentByAdmin from './AssignmentByAdmin';
 import '../../css/assignmentDetail.css';
 
 class AssignmentDetail extends Component {
@@ -57,16 +57,23 @@ class AssignmentDetail extends Component {
     */
     switch(mode) {
       case 1 :
-        return <AssignmentSubmit />
+        return <AssignmentByStudent />
 
       case 2 :
-        return <AssignmentSubmit />
+        return <AssignmentByAdmin 
+                btnName = "수정하기"
+               />
       
       case 3 : 
-        return <AssignmentSubmit />
+        return <AssignmentByAdmin 
+                btnName = "수정완료"
+               />
 
       case 4 : 
-        return <AssignmentDownload />
+        return <AssignmentByAdmin 
+                btnName = "다운로드"
+               />
+
 
       default : return;
     }

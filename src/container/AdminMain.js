@@ -29,7 +29,7 @@ class AdminMain extends Component{
 
   renderChild = (modalActions) => {
     const selectEventHandler = (e) => {
-      modalActions.modalClick(3);
+      modalActions.modalClick(2);
       this.props.selectAssignmentsByAdmin(e);
     }
 

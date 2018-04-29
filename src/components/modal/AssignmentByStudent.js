@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/assignmentDetail.css';
 
-const AssignmentSubmit = ({ submitEventHandler }) => {
+const AssignmentSubmit = ({ clickEventHandler }) => {
   return (
     <React.Fragment> 
       <div className="assignment-mode-secion">
