@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AssignmentDetail from '../modal/AssignmentDetail';
+import AssignmentModal from '../modal/AssignmentModal';
 import Mypage from '../modal/MyPage';
 import '../../css/modal.css';
 
@@ -28,7 +28,7 @@ class Modal extends Component {
         return <Mypage />
 
       case 1 : case 2 : case 3 : case 4:
-        return <AssignmentDetail 
+        return <AssignmentModal 
                 assignment = {this.props.selectedAssignment} 
                 onClickHandler = {this.modalClose}
                 id = {this.props.state.id}

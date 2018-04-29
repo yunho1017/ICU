@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import { getDateFormat } from '../../common';
 import AssignmentByStudent from './AssignmentByStudent';
 import AssignmentByAdmin from './AssignmentByAdmin';
-import '../../css/assignmentDetail.css';
+import AssignmentInfo from './AssignmentInfo';
+import '../../css/modal.css';
 
 class AssignmentDetail extends Component {
   render(){
     const { assignment, onClickHandler } = this.props;
+    const assingmentInfo = [
+      {title: "과제명", contents: assignment.title},
+      {title: "작성자", contents: assignment.auther},
+      {title: "가간", contents: getDateFormat(assignment.start) + ' ~ ' + getDateFormat(assignment.end)},
+      {title: "설명", contents: assignment.detail},
+    ]
     return (
       <div id="assignment-modal-wrapper">
         <div className="assignment-modal-top-bottm top" >
@@ -17,30 +24,13 @@ class AssignmentDetail extends Component {
           />
         </div>
         <div id="assignment-modal-contents-wrapper">
-          <div className="assignment-detail-wrapper">
-            <div className="assignment-detail-info-title">과제명</div>  
-            <div className="assignment-detail-contents">
-              {assignment.title} 
-            </div>
-          </div>
-          <div className="assignment-detail-wrapper">
-            <div className="assignment-detail-info-title">작성자</div> 
-            <div className="assignment-detail-contents">
-              {assignment.auther} 
-            </div> 
-          </div>
-          <div className="assignment-detail-wrapper">
-            <div className="assignment-detail-info-title">기간</div>
-            <div className="assignment-detail-contents">
-              {getDateFormat(assignment.start) + ' ~ ' + getDateFormat(assignment.end)} 
-            </div>
-           </div>
-          <div className="assignment-detail-wrapper"> 
-            <div className="assignment-detail-info-title">설명</div>
-            <div className="assignment-detail-contents">
-              {assignment.detail} 
-            </div>
-          </div>
+          {assingmentInfo.map((info, index) => {
+            return <AssignmentInfo
+                    key = {index}
+                    title = {info.title}
+                    contents = {info.contents}
+                   />
+          })}
         </div>
         {this.renderModalMode(this.props.id)}
       </div>
