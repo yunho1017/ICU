@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import * as actionTypes from '../action/assignment';
-import Calendar from '../components/basic/Calendar';
+import Calendar from '../components/common/Calendar';
 import CreateAssignment from '../components/admin/CreateAssignment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ModalConsumer } from '../context/ModalProvider';
-import AssignmentContents from '../components/basic/AssignmentContents';
+import AssignmentContents from '../components/common/AssignmentContents';
 import '../css/main.css';
 
 class AdminMain extends Component{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as actionTypes from '../action/assignment';
 import AssignmentList from '../components/main/AssignmentList';
-import Calendar from '../components/basic/Calendar';
+import Calendar from '../components/common/Calendar';
 import { ModalConsumer } from '../context/ModalProvider';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/basic/Header';
+import Header from '../components/common/Header';
 import Modal from '../components/modal/Modal';
 import SideMenu from '../components/main/SideMenu';
 import { ModalConsumer } from '../context/ModalProvider';
