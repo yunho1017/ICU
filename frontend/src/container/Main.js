@@ -57,9 +57,8 @@ class Main extends Component {
     let assignmentList = [];
 
     assignmentList = assignments.filter((assignment, index) => { 
-      const startDate = new Date(assignment.start).getTime();
-      const endDate = new Date(assignment.end).getTime();
-
+      const startDate = new Date(assignment.date.start).getTime();
+      const endDate = new Date(assignment.date.end).getTime();
       if((startDate >= selectedDate.start && startDate <= selectedDate.end) 
         || (endDate >= selectedDate.start && endDate <= selectedDate.end)
         || (startDate <= selectedDate.start && endDate >= selectedDate.end )) return true;

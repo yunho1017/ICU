@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AssignmentContents from '../basic/AssignmentContents';
+import AssignmentContents from '../common/AssignmentContents';
 import { ModalConsumer } from '../../context/ModalProvider';
 // import SelectedSubject from './SelectedSubject';
 import '../../css/assignmentList.css';
