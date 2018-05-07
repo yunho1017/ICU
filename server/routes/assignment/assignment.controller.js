@@ -48,7 +48,7 @@ exports.readAssignmentByStudent = (req, res) => {
   };
 
   Database.query('select * from assigment where subject_id = ?', [subjectId])
-  .then(results => {
+  .then(async results => {
     if(results.length< 0) {
       return res.status(500).end();
     }
@@ -87,7 +87,7 @@ exports.readAssignmentByAdmin = (req, res) => {
   };
 
   Database.query('select * from assigment where auther = ?', [userInfo.id])
-  .then(results => {
+  .then(async results => {
     if(results.length< 0) {
       return res.status(500).end();
     }
