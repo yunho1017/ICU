@@ -38,7 +38,7 @@ exports.createSubject = (req, res) => {
     })
 };
 
-exports.getSubject = (req, res) => {
+exports.readSubject = (req, res) => {
   if(userInfo.isAdmin) {
     return res.status(403).end();
   }

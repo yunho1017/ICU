@@ -35,7 +35,7 @@ exports.createAssignment = (req, res) => {
   })
 };
 
-exports.getAssignmentByStudent = (req, res) => {
+exports.readAssignmentByStudent = (req, res) => {
   if(userInfo.isAdmin) {
     return res.status(403).end();
   }
@@ -75,7 +75,7 @@ exports.getAssignmentByStudent = (req, res) => {
   })
 };
 
-exports.getAssignmentByAdmin = (req, res) => {
+exports.readAssignmentByAdmin = (req, res) => {
   if(!userInfo.isAdmin) {
     return res.status(403).end();
   }

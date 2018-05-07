@@ -4,7 +4,7 @@ const controller = require('./subject.controller');
 
 router.route('/subject').post(authCheck, controller.createSubject);
 
-router.route('/subject').get(authCheck, controller.getSubject);
+router.route('/subject').get(authCheck, controller.readSubject);
 
 // router.route('/subject').put(authCheck, controller.deleteSubject);
 
