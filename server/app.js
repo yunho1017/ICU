@@ -31,8 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', express.static(__dirname + '/build'));
-app.use('/api', auth);
-app.use('/api', subejct);
+app.use('/api', require('./routes'));
 
 app.listen(app.get('port'), function () {
   console.log('Example app listening on' + app.get('port') + 'port');
