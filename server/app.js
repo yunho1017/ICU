@@ -28,11 +28,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', express.static(__dirname + '/build'));
+app.use('/static', express.static(__dirname + '/../frontend/build/static'));
 app.use('/api', require('./routes'));
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'))
+})
 app.listen(app.get('port'), function () {
   console.log('Example app listening on' + app.get('port') + 'port');
 })

@@ -60,7 +60,7 @@ exports.signin = (req, res) => {
       if(result.length !== 1) {
         return res.status(204).end();
       }
-
+      
       payload.id = id;
       payload.grade = result[0].grade;
       payload.class = result[0].class;
