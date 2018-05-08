@@ -18,8 +18,8 @@ export const signin = (requestData, isAdmin) => {
   return async (dispatch, getState) => {
     let response;
 
-    if(isAdmin) response = await axios.post('/auth/admin/signin',requestData);
-    else response = await axios.post('/auth/signin',requestData);
+    if(isAdmin) response = await axios.post('http://localhost:8080/api/auth/admin/signin',requestData);
+    else response = await axios.post('http://localhost:8080/api/auth/signin',requestData);
 
     if(response.status === 200) {
       const data = {
@@ -27,10 +27,13 @@ export const signin = (requestData, isAdmin) => {
         refreshToken: response.data.refreshToken,
         isAdmin: isAdmin
       };
+
+      console.log(data);
       
-      dispatch({ type: actionTypes.USER_SIGNIN_SUCCEEDED, data});
+      
+      dispatch({ type: actionTypes.SIGNIN_SUCCEEDED, data});
     }
 
-    dispatch({ type: actionTypes.USER_SIGNIN_FAILED });
+    dispatch({ type: actionTypes.SIGNIN_FAILED });
   }
 }
