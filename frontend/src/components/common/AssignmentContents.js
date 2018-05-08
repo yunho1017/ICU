@@ -22,8 +22,8 @@ class AssignmentContents extends Component {
     return this.props.assignmentsCardList.map((assignment, index) => { 
       const styles = { backgroundColor : assignment.color };
 
-      let startDate = new Date(assignment.date.start);
-      let endDate = new Date(assignment.date.end);
+      let startDate = new Date(assignment.assginmentDate.start);
+      let endDate = new Date(assignment.assginmentDate.end);
 
       return <AssignmentCard 
                 key = {assignment.key}

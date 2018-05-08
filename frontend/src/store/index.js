@@ -1,8 +1,10 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducers from '../reducer/index';
+import thunk from 'redux-thunk';
 
 export const store = createStore(
-  reducers
+  reducers,
+  applyMiddleware(thunk)
 );
 
 export const dispatch = (action)=>{
