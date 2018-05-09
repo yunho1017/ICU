@@ -19,8 +19,7 @@ const authMiddleware = (req, res, next) => {
   const onError = (error) => {
     res.status(403).json(error.message);
   }
-
-  p.then((decoded) => {
+  p.then((decoded) => { 
     req.decoded = decoded;
     next();
     }).catch(onError)

@@ -6,24 +6,29 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const swaggerJSDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express');
+const cors = require('cors');
 app.set('port', PORT);
 
 const auth = require('./routes/account/index');
 const subejct = require('./routes/subject/index');
 
-// const options = {
-//   swaggerDefinition: {
-//     info: { 
-//       title: 'I check U', 
-//       version: '1.0.0', // Version (required)
-//       description: 'A sample API', // Description (optional)
-//     }
-//   },
-//   apis: ['./api/swagger.yaml'],
-// }
+const options = {
+  swaggerDefinition: {
+    info: { 
+      title: 'I check U', 
+      version: '1.0.0', // Version (required)
+      description: 'A sample API', // Description (optional)
+    }
+  },
+  apis: ['./api/swagger.yaml'],
+}
 
-// const swaggerSpec = swaggerJSDoc(options);
-// app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+const swaggerSpec = swaggerJSDoc(options);
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

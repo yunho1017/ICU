@@ -6,8 +6,8 @@ exports.createUser = (req, res) => {
   const { id, pwd, name, grade, class: _class } = req.body;
   const refreshToken = generateRefreshToken();
   let status = 500;
-  
-  Database.query('insert into user value(?, ?, ?, ?, ?, ?)', [id, pwd, name, grade, _class, refreshToken])
+
+  Database.query('insert into user values (?, ?, ?, ?, ?, ?)', [id, pwd, name, grade, _class, refreshToken])
     .then(result => {
       if(result.affectedRows !== 1)  {
         return res.status(500).end();
@@ -65,7 +65,7 @@ exports.signin = (req, res) => {
       payload.grade = result[0].grade;
       payload.class = result[0].class;
       payload.isAdmin = false;
-      response.refreshToken = result[0].refreshToken;
+      response.refreshToken = result[0].refresh_token;
 
       return new Promise((resolve, reject) => {
         jwt.sign( payload, secret, jwtOption, (err, token) => {
@@ -101,7 +101,7 @@ exports.adminSignin = (req, res) => {
 
       payload.id = id;
       payload.isAdmin = true;
-      response.refreshToken = result[0].refreshToken;
+      response.refreshToken = result[0].refresh_token;
 
       return new Promise((resolve, reject) => {
         jwt.sign( payload, secret, jwtOption, (err, token) => {
@@ -112,6 +112,8 @@ exports.adminSignin = (req, res) => {
     })
     .then(token => {
       response.token = token;
+      console.log(response);
+      
       res.status(200).json(response);
     })
     .catch(err => {

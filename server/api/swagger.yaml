@@ -1,0 +1,247 @@
+swagger: "2.0"
+info:
+  description: "This is gaida API Docs. almost API using JWT."
+  version: "1.0.0"
+  title: "Swagger gaida"
+host: "awsdomain"
+basePath: "/"
+tags:
+- name: "Authentication"
+  description: "Everything about Auth"
+- name: "Assignment"
+  description: "Everything about Assignment"
+- name: "Subject"
+  description: "Everything about Subject"
+schemes:
+- "http"
+
+paths:
+  /auth/signin:
+    post:
+      summary: 유저 로그인
+      description: 유저 로그인
+      produces: 
+      - application/json
+      tags: 
+      - Authentication
+      parameters: 
+      - in: body
+        name: id
+        description: 아이디
+        type: string
+        required: true
+      - in: body
+        name: pwd
+        description: 패스워디
+        type: string
+        required: true
+      responses:
+        200:
+          description: 로그인 성공
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6IiIsInVzZXJuYW1lIjoiZm9vIiwiZXhwIjoxNTA3MTQ2MzAxfQ.2ey2CYUnW9iUyyQJIYu856q9SaUxZU0FCejlA3FObPE"
+              refreshToken:
+                type: string
+                example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6IiIsInVzZXJuYW1lIjoiZm9vIiwiZXhwIjoxNTA3MTQ2MzAxfQ.2ey2CYUnW9iUyyQJIYu856q9SaUxZU0FCejlA3FObPE"
+        204:
+          description: 로그인 실패
+        500:
+          description: 서버 오류
+  /auth/signup:
+    post:
+      summary: 유저 회원가입
+      description: 유저 회원가입
+      produces: 
+      - application/json
+      tags: 
+      - Authentication
+      parameters: 
+      - in: body
+        name: id
+        description: 아이디
+        type: string
+        required: true
+      - in: body
+        name: pwd
+        description: 패스워드
+        type: string
+        required: true
+      - in: body
+        name: name
+        description: 이름
+        type: string
+        required: true
+      - in: body
+        name: grade
+        description: 학년
+        type: int
+        required: true
+      - in: body
+        name: class
+        description: 반
+        type: int
+        required: true
+      responses:
+        201:
+          description: 회원가입 성공
+        400:
+          description: 회원가입 실패
+        500:
+          description: 서버 오류
+  /auth/admin/signin:
+    post:
+      summary: 관리자 로그인
+      description: 관리자 로그인
+      produces: 
+      - application/json
+      tags: 
+      - Authentication
+      parameters: 
+      - in: body
+        name: id
+        description: 아이디
+        type: string
+        required: true
+      - in: body
+        name: pwd
+        description: 패스워디
+        type: string
+        required: true
+      responses:
+        200:
+          description: 로그인 성공
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6IiIsInVzZXJuYW1lIjoiZm9vIiwiZXhwIjoxNTA3MTQ2MzAxfQ.2ey2CYUnW9iUyyQJIYu856q9SaUxZU0FCejlA3FObPE"
+              refreshToken:
+                type: string
+                example: "1525618031978742429"
+        204:
+          description: 로그인 실패
+        500:
+          description: 서버 오류
+  /auth/admin/signup:
+    post:
+      summary: 관리자 회원가입
+      description: 관리자 회원가입
+      produces: 
+      - application/json
+      tags: 
+      - Authentication
+      parameters: 
+      - in: body
+        name: id
+        description: 아이디
+        type: string
+        required: true
+      - in: body
+        name: pwd
+        description: 패스워드
+        type: string
+        required: true
+      - in: body
+        name: name
+        description: 이름
+        type: string
+        required: true
+      - in: body
+        name: serialCode
+        description: 시리얼코드
+        type: string
+        required: true
+      - in: body
+        name: colorCode
+        description: 개인 색상
+        type: string
+        required: true
+      responses:
+        201:
+          description: 회원가입 성공
+        400:
+          description: 회원가입 실패
+        500:
+          description: 서버 오류
+
+  /assignment:
+    post:
+      summary: 과제 등록하기
+      description: 과제 등록하기
+      produces: 
+      - application/json
+      tags: 
+      - Assignment
+      parameters: 
+      - in: body
+        name: id
+        description: 아이디
+        type: string
+        required: true
+      - in: body
+        name: pwd
+        description: 패스워디
+        type: string
+        required: true
+      responses:
+        200:
+          description: 로그인 성공
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6IiIsInVzZXJuYW1lIjoiZm9vIiwiZXhwIjoxNTA3MTQ2MzAxfQ.2ey2CYUnW9iUyyQJIYu856q9SaUxZU0FCejlA3FObPE"
+              refreshToken:
+                type: string
+                example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6IiIsInVzZXJuYW1lIjoiZm9vIiwiZXhwIjoxNTA3MTQ2MzAxfQ.2ey2CYUnW9iUyyQJIYu856q9SaUxZU0FCejlA3FObPE"
+        204:
+          description: 로그인 실패
+        500:
+          description: 서버 오류
+  /assignment/:subject_id:
+    get:
+      summary: 과목별 과제 리스트
+      description: 과목별 과제 리스트
+      produces: 
+      - application/json
+      tags: 
+      - Assignment
+      parameters: 
+      responses:
+        201:
+          description: 회원가입 성공
+        400:
+          description: 회원가입 실패
+        500:
+          description: 서버 오류
+  /assignment/admin:
+    get:
+      summary: 관리자가 등록한 과제 리스트
+      description: 관리자가 등록한 과제 리스트
+      produces: 
+      - application/json
+      tags: 
+      - Assignment
+      parameters: 
+      responses:
+        200:
+          description: 로그인 성공
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6IiIsInVzZXJuYW1lIjoiZm9vIiwiZXhwIjoxNTA3MTQ2MzAxfQ.2ey2CYUnW9iUyyQJIYu856q9SaUxZU0FCejlA3FObPE"
+              refreshToken:
+                type: string
+                example: "1525618031978742429"
+        204:
+          description: 로그인 실패
+        500:
+          description: 서버 오류
