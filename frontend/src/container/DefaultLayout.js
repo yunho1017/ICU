@@ -5,7 +5,8 @@ import SideMenu from '../components/main/SideMenu';
 import { ModalConsumer } from '../context/ModalProvider';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import * as actionTypes from '../action/assignment';
+import * as adminAction from '../action/admin';
+import * as studentAction from '../action/student';
 import { bindActionCreators } from 'redux';
 
 class DefaultLayout extends Component {
@@ -41,9 +42,9 @@ class DefaultLayout extends Component {
         return (
           <React.Fragment>
             <SideMenu 
-              subjects = {this.props.studentSubjects} 
-              selectedSubject = {this.props.studendSelectedSubject}
-              selectSubject = {this.props.selectSubjectByStudent}
+              items = {this.props.studentItems} 
+              selectedItem = {this.props.studendSelectedItems}
+              selectItem = {this.props.selectSideItemForStudent}
             />
             {this.renderModal(state, actions, this.props.studentSelectedAssignment)}
           </React.Fragment>
@@ -52,9 +53,9 @@ class DefaultLayout extends Component {
         return ( 
           <React.Fragment>
             <SideMenu 
-              subjects = {this.props.adminSubjects} 
-              selectedSubject = {this.props.adminSelectedSubject}
-              selectSubject = {this.props.selectSubjectByAdmin}
+              items = {this.props.adminItems} 
+              selectedItem = {this.props.adminSelectedItem}
+              selectItem = {this.props.selectSideItemForAdmin}
             />
             {this.renderModal(state, actions, this.props.adminSelectedAssignment)}
           </React.Fragment>
@@ -66,16 +67,17 @@ class DefaultLayout extends Component {
 
 const mapStateToProps= (state) => {
   return {
-    studentSubjects: state.student.subjects,
-    studendSelectedSubject: state.student.selectedSubject,
+    studentItems: state.student.subjects,
+    studendSelectedItems: state.student.selectedSubject,
     studentSelectedAssignment: state.student.selectedAssignment,
-    adminSubjects: state.admin.items,
-    adminSelectedSubject: state.admin.selectedItem,
+
+    adminItems: state.admin.items,
+    adminSelectedItem: state.admin.selectedItem,
     adminSelectedAssignment: state.admin.selectedAssignment
   } 
 }
   
 const mapDispatchToProps= (dispatch) => {
-  return bindActionCreators({ ...actionTypes }, dispatch)
+  return bindActionCreators({ ...adminAction, ...studentAction }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(DefaultLayout);

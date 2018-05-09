@@ -1,11 +1,11 @@
-import { actionTypes } from '../action/assignment';
+import { actionTypes } from '../action/admin';
 import { adminDefaultState } from '../config';
 
 const admin = (state = adminDefaultState, action) => {
   switch(action.type) {
-    case actionTypes.ADMIN_SELECT_SUBJECT: 
+    case actionTypes.ADMIN_SELECT_SIDE_ITEM: 
       return { ...state,
-        selectedItem: action.subject,
+        selectedItem: action.item,
         assignmentsCardList: []
       }
 

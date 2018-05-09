@@ -1,8 +1,16 @@
+//사용자 계정 관련 action, action 생성자
 import axios from 'axios';
 
 export const actionTypes = {
+  LOGOUT: 'LOGOUT',
   SIGNIN_SUCCEEDED: 'SIGNIN_SUCCEEDED',
   SIGNIN_FAILED: 'SIGNIN_FAILED',
+}
+
+export const logout = () => {
+  return {
+    type: actionTypes.LOGOUT
+  }
 }
 
 export const signup = async (requestData, isAdmin) => {
@@ -27,13 +35,10 @@ export const signin = (requestData, isAdmin) => {
         refreshToken: response.data.refreshToken,
         isAdmin: isAdmin
       };
-
-      console.log(data);
-      
-      
+            
       dispatch({ type: actionTypes.SIGNIN_SUCCEEDED, data});
     }
-
+    
     dispatch({ type: actionTypes.SIGNIN_FAILED });
   }
 }

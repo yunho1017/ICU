@@ -1,4 +1,4 @@
-import { actionTypes } from '../action/assignment';
+import { actionTypes } from '../action/student';
 import { studentDefaultState } from '../config';
 
 const student = (state = studentDefaultState, action) => {
@@ -15,9 +15,9 @@ const student = (state = studentDefaultState, action) => {
         selectedDate: defaultDate
       }
 
-    case actionTypes.STUDENT_SELECT_SUBJECT: 
+    case actionTypes.STUDENT_SELECT_SIDE_ITEM: 
       return { ...state,
-        selectedSubject: action.subject,
+        selectedSubject: action.item,
         assignmentsCardList: []
       }
 
@@ -26,7 +26,6 @@ const student = (state = studentDefaultState, action) => {
         selectedDate: action.date
       }
 
-      
       case actionTypes.STUDENT_SET_ASSIGNMENT_CARD_LIST:
       return { ...state, 
         assignmentsCardList: action.assignments

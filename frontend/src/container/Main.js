@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as actionTypes from '../action/assignment';
+import * as action from '../action/student';
 import AssignmentList from '../components/main/AssignmentList';
 import Calendar from '../components/common/Calendar';
 import { ModalConsumer } from '../context/ModalProvider';
@@ -8,10 +8,6 @@ import { connect } from 'react-redux';
 import '../css/main.css';
 
 class MainLayout extends Component {
-  selectEventHandler = (e) => {
-    this.props.modalActions.modalClick(1);
-    this.props.selectAssignmentsByStudent(e);
-  }
   render() {
     const { selectAssignmentsCard, 
             assignmentsCardList, 
@@ -35,16 +31,21 @@ class MainLayout extends Component {
       </div>
     )
   }
+
+  selectEventHandler = (e) => {
+    this.props.modalActions.modalClick(1);
+    this.props.selectAssignmentsForStudent(e);
+  }
 }
 
 class Main extends Component {
   async componentDidMount() {
-    await this.props.setDateByStudent();
+    await this.props.setDateForStudent();
     this.setAssignmentsCardList();
   }
 
   selectDateHandler = (e) => {
-    this.props.selectDateByStudent(e);
+    this.props.selectDateForStudent(e);
     this.setAssignmentsCardList();
   }
   
@@ -65,7 +66,7 @@ class Main extends Component {
 
       return false;
     });
-    return this.props.setAssignmentsCardListByStudent(assignmentList);
+    return this.props.setAssignmentsCardListForStudent(assignmentList);
   }
 
   render() {
@@ -73,8 +74,8 @@ class Main extends Component {
       <ModalConsumer>
           { (modal) => (
             <MainLayout
-              selectAssignmentsByStudent = {this.props.selectAssignmentsByStudent}
-              selectAssignmentsCard = {this.props.selectAssignmentsByStudent}
+              selectAssignmentsForStudent = {this.props.selectAssignmentsForStudent}
+              selectAssignmentsCard = {this.props.selectAssignmentsForStudent}
               assignmentsCardList = {this.props.assignmentsCardList}
               selectDateHandler = {this.selectDateHandler}
               selectedDate = {this.props.selectedDate}
@@ -89,14 +90,14 @@ class Main extends Component {
   
 const mapStateToProps= (state) => {
   return {
-    assignments: state.student.assignments[state.student.selectedSubject],
+    assignments: state.student.assignments,
     assignmentsCardList: state.student.assignmentsCardList,
     selectedDate: state.student.selectedDate
   } 
 }
   
 const mapDispatchToProps= (dispatch) => {
-  return bindActionCreators({ ...actionTypes }, dispatch)
+  return bindActionCreators({ ...action }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

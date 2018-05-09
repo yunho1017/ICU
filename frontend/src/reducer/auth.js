@@ -15,6 +15,14 @@ const auth = (state = authDefaultState, action) => {
       return { ...state,
         isSucceeded: false
       }
+
+    case actionTypes.LOGOUT: 
+      return {  ...state,
+        isLogin: false,
+        isAdmin: false,
+        token: '',
+        refreshToken: ''
+      }
     default : return state;
   }
 }

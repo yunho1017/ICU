@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getDateFormat } from '../../common';
-import AssignmentByAdmin from './AssignmentByAdmin';
+import AssignmentForAdmin from './AssignmentForAdmin';
 import AssignmentInfo from './AssignmentInfo';
 import '../../css/modal.css';
 
@@ -31,7 +31,7 @@ class AssignmentModify extends Component {
                    />
           })}
         </div>
-        <AssignmentByAdmin 
+        <AssignmentForAdmin 
           btnName = "수정완료"
         />
       </div>

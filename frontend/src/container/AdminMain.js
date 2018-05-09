@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as actionTypes from '../action/assignment';
+import * as action from '../action/admin';
 import Calendar from '../components/common/Calendar';
 import CreateAssignment from '../components/admin/CreateAssignment';
 import { connect } from 'react-redux';
@@ -24,17 +24,17 @@ class AdminMain extends Component{
   }
 
   async componentDidMount() {
-    await this.props.setDateByAdmin();
+    await this.props.setDateForAdmin();
   }
 
   renderChild = (modalActions) => {
     const selectEventHandler = (e) => {
       modalActions.modalClick(2);
-      this.props.selectAssignmentsByAdmin(e);
+      this.props.selectAssignmentsForAdmin(e);
     }
 
     const selectDateHandler = (e) => {
-      this.props.selectDateByAdmin(e);
+      this.props.selectDateForAdmin(e);
     }
 
     switch(this.props.selected) {
@@ -57,7 +57,7 @@ class AdminMain extends Component{
           <AssignmentContents 
             assignments = {this.props.assignments} 
             assignmentsCardList = {this.props.assignments}
-            selectAssignmentsCard = {this.props.selectAssignmentsByAdmin}
+            selectAssignmentsCard = {this.props.selectAssignmentsForAdmin}
             modalActions = {modalActions}
             modalId = {4}
           />
@@ -76,7 +76,7 @@ const mapStateToProps= (state) => {
 }
   
 const mapDispatchToProps= (dispatch) => {
-  return bindActionCreators({ ...actionTypes }, dispatch)
+  return bindActionCreators({ ...action }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminMain);
