@@ -5,7 +5,7 @@ const admin = (state = adminDefaultState, action) => {
   switch(action.type) {
     case actionTypes.ADMIN_SELECT_SUBJECT: 
       return { ...state,
-        selectedSubject: action.subject,
+        selectedItem: action.subject,
         assignmentsCardList: []
       }
 

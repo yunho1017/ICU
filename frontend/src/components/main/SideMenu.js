@@ -14,20 +14,21 @@ class SideMenu extends Component{
   }
 
   subjectRender = () => {
+    
     return this.props.subjects.map((subject, index) => {
       return <SideItem 
-                key = {index}
-                name = {subject}
+                key = {subject.id}
+                id = {subject.id}
+                name = {subject.name}
                 handleEvent = {this.handleClick} 
-                styles = {this.props.selectedSubject === subject ? 'selected-subject' : ''}
+                styles = {this.props.selectedSubject === subject.id ? 'selected-subject' : ''}
                 index = {index}
               />
     })
   }
 
-  handleClick = (subject) => {
-    
-    this.props.selectSubject(subject);
+  handleClick = (id) => {
+    this.props.selectSubject(id);
   }
 }
 

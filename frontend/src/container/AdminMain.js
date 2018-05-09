@@ -38,7 +38,7 @@ class AdminMain extends Component{
     }
 
     switch(this.props.selected) {
-      case 0 : 
+      case '0' : 
         return (
           <React.Fragment>
             <Calendar 
@@ -52,7 +52,7 @@ class AdminMain extends Component{
             />
           </React.Fragment>
         )
-      case 1 : 
+      case '1' : 
         return (
           <AssignmentContents 
             assignments = {this.props.assignments} 
@@ -70,7 +70,7 @@ class AdminMain extends Component{
 const mapStateToProps= (state) => {
   return {
     assignments: state.admin.assignments,
-    selected: state.admin.selectedSubject,
+    selected: state.admin.selectedItem,
     selectedDate: state.admin.selectedDate
   } 
 }

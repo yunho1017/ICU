@@ -1,8 +1,15 @@
 export const API_SERVER_DOMAIN = '';
 
 export const adminDefaultState = {
-    subjects: ['과제 업로드', '과제 다운로드'],
-    selectedSubject: 0,
+    subjects: [{
+      id:'0',
+      name: '소프트웨어 공학'
+    }],
+    items: [
+      { id: '0', name: '과제 업로드'}, 
+      { id: '1', name: '과제 다운로드'}
+    ],
+    selectedItem: '0',
     selectedDate: {
       start: new Date(),
       end: new Date()
@@ -25,14 +32,17 @@ export const adminDefaultState = {
   }
 
   export const studentDefaultState = {
-    subjects: ['소프트웨어 공학'],
-    selectedSubject:  0,
+    subjects: [{
+      id:'0',
+      name: '소프트웨어 공학'
+    }],
+    selectedSubject: '0',
     selectedDate: { 
       start: new Date(),
       end: new Date()
     },
     assignments: {
-      '소프트웨어 공학' : [{
+      '0' : [{
         key: 123,
         subject: '소프트웨어 공학',
         title: '프로젝트 제안서 제출',

@@ -35,7 +35,7 @@ class DefaultLayout extends Component {
   renderDefaultLayout = (state, actions) => {
     //admin student 구분 : 추후에 리덕스로 구분 예정 (지금은 그냥 급한불끄기..)
     const location = browserHistory.getCurrentLocation().pathname;
-    
+
     switch(location) {
       case '/' : 
         return (
@@ -67,10 +67,10 @@ class DefaultLayout extends Component {
 const mapStateToProps= (state) => {
   return {
     studentSubjects: state.student.subjects,
-    studendSelectedSubject: state.student.subjects[state.student.selectedSubject],
+    studendSelectedSubject: state.student.selectedSubject,
     studentSelectedAssignment: state.student.selectedAssignment,
-    adminSubjects: state.admin.subjects,
-    adminSelectedSubject: state.admin.subjects[state.admin.selectedSubject],
+    adminSubjects: state.admin.items,
+    adminSelectedSubject: state.admin.selectedItem,
     adminSelectedAssignment: state.admin.selectedAssignment
   } 
 }

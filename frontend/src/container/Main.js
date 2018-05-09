@@ -89,7 +89,7 @@ class Main extends Component {
   
 const mapStateToProps= (state) => {
   return {
-    assignments: state.student.assignments[state.student.subjects[state.student.selectedSubject]],
+    assignments: state.student.assignments[state.student.selectedSubject],
     assignmentsCardList: state.student.assignmentsCardList,
     selectedDate: state.student.selectedDate
   } 

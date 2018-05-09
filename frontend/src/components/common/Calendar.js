@@ -60,6 +60,10 @@ class Calendar extends Component {
 }
 
 class CustomToolbar extends Toolbar {
+  state = {
+    selectedMonth: new Date().getMonth() + 1
+  }
+
   render() {
     return (
       <div className='rbc-toolbar'>
@@ -73,7 +77,18 @@ class CustomToolbar extends Toolbar {
     );
   }
 
-  navigate = action => this.props.onNavigate(action);
+  navigate = action => {
+    const selectedMonth = this.state.selectedMonth;
+
+    switch(action) {
+      case 'TODAY' : this.setState({ selectedMonth: new Date().getMonth() + 1 }); break;
+      case 'PREV' : this.setState({ selectedMonth: selectedMonth - 1 }); break;
+      case 'NEXT' : this.setState({ selectedMonth: selectedMonth + 1 }); break;
+      default : break;
+    }
+    
+    this.props.onNavigate(action);
+  }
 }
 
 export default Calendar;
