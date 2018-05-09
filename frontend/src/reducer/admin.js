@@ -31,6 +31,16 @@ const admin = (state = adminDefaultState, action) => {
         selectedDate: defaultDate
       }
 
+    case actionTypes.ADMIN_SET_ASSIGNMENT:
+      return { ...state,
+        assignments: action.assignments
+      }
+
+    case actionTypes.ADMIN_SET_SUBJECT:
+      return { ...state,
+        subjects: action.subjects
+      }
+
     default : return state;
   }
 }

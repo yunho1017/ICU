@@ -26,23 +26,29 @@ const student = (state = studentDefaultState, action) => {
         selectedDate: action.date
       }
 
-    case actionTypes.STUDENT_SET_ASSIGNMENTS:
-      return { ...state,
-        assignments: action.assignments
-      }
-
-    case actionTypes.STUDENT_SET_ASSIGNMENT_CARD_LIST:
+      
+      case actionTypes.STUDENT_SET_ASSIGNMENT_CARD_LIST:
       return { ...state, 
         assignmentsCardList: action.assignments
       }
-
-    case actionTypes.STUDENT_SELECT_ASSIGNMENT:
+      
+      case actionTypes.STUDENT_SELECT_ASSIGNMENT:
       return { ...state,
         selectedAssignment: action.assignment
       }
       
-    default : return state;
+      case actionTypes.STUDENT_SET_ASSIGNMENT:
+        return { ...state,
+          assignments: action.assignments
+        }
+    
+      case actionTypes.STUDENT_SET_SUBJECT:
+        return { ...state,
+          subjects: action.subjects
+        }
+        
+      default : return state;
+    }
   }
-}
-
+  
 export default student;

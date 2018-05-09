@@ -5,20 +5,14 @@ export const actionTypes = {
   ADMIN_SELECT_ASSIGNMENT: 'ADMIN_SELECT_ASSIGNMENT',
 
   STUDENT_SET_DATE: 'STUDENTS_SET_DATE',
-  STUDENT_SELECT_DATE: 'STUDENT_SELECT_DATE',
   STUDENT_SELECT_SUBJECT: 'STUDENT_SELECT_SUBJECT',
   STUDENT_SELECT_ASSIGNMENT: 'STUDENT_SELECT_ASSIGNMENT',
   STUDENT_SET_ASSIGNMENT_CARD_LIST: 'STUDENT_SET_ASSIGNMENT_CARD_LIST',
 
-  STUDENT_GET_SUBJECT_REQUEST_SUCCEEDED: 'STUDENT_GET_SUBJECT_REQUEST_SUCCEEDED',
-  STUDENT_GET_SUBJECT_REQUEST_FAILED: 'STUDENT_GET_SUBJECT_REQUEST_FAILED',
-  STUDENT_GET_ASSIGNMENT_REQUEST_SUCCEEDED: 'STUDENT_GET_ASSIGNMENT_REQUEST_SUCCEEDED',
-  STUDENT_GET_ASSIGNMENT_REQUEST_FAILED: 'STUDENT_GET_ASSIGNMENT_REQUEST_FAILED',
-
-  ADMIN_GET_SUBJECT_REQUEST_SUCCEEDED: 'ADMIN_GET_SUBJECT_REQUEST_SUCCEEDED',
-  ADMIN_GET_SUBJECT_REQUEST_FAILED: 'ADMIN_GET_SUBJECT_REQUEST_FAILED',
-  ADMIN_GET_ASSIGNMENT_REQUEST_SUCCEEDED: 'ADMIN_GET_ASSIGNMENT_REQUEST_SUCCEEDED',
-  ADMIN_GET_ASSIGNMENT_REQUEST_FAILED: 'ADMIN_GET_ASSIGNMENT_REQUEST_FAILED',
+  ADMIN_SET_SUBJECT: 'ADMIN_SET_SUBJECT',
+  ADMIN_SET_ASSIGNMENT: 'ADMIN_SET_ASSIGNMENT',
+  STUDENT_SET_SUBJECT: 'ADMIN_SET_SUBJECT',
+  STUDENT_SET_ASSIGNMENT: 'ADMIN_SET_ASSIGNMENT',
 }
 
 export const setDateByAdmin = () => {
@@ -81,4 +75,37 @@ export const setAssignmentsCardListByStudent = (assignments) => {
     type: actionTypes.STUDENT_SET_ASSIGNMENT_CARD_LIST,
     assignments: assignments
   }
+}
+
+export const setSubject = (token, isAdmin) => {
+  let defaultValue =  [{ id:'0', name: '소프트웨어 공학' }];
+  let response = await axios.get('/subject',requestData, {
+    headers: {
+      authorization: token
+    }
+  });
+
+  if(response.status === 200) {
+    if(isAdmin) dispatch({ type: actionTypes.ADMIN_SET_SUBJECT, subjects: response.data});
+    else dispatch({ type: actionTypes.STUDENT_SET_SUBJECT, subjects: response.data});
+  }
+
+  if(isAdmin) dispatch({ type: actionTypes.ADMIN_SET_SUBJECT, subjects: defaultValue});
+  else dispatch({ type: actionTypes.STUDENT_SET_SUBJECT, subjects: defaultValue});
+}
+
+export const setAssignment = async (requestData, token, isAdmin) => {
+  let response = await axios.get('/assignment',requestData, {
+    headers: {
+      authorization: token
+    }
+  });
+
+  if(response.status === 200) {
+    if(isAdmin) dispatch({ type: actionTypes.ADMIN_SET_ASSIGNMENT, assignments: response.data});
+    else dispatch({ type: actionTypes.STUDENT_SET_ASSIGNMENT, assignments: response.data});
+  }
+
+  if(isAdmin) dispatch({ type: actionTypes.ADMIN_SET_ASSIGNMENT, assignments: []});
+  else dispatch({ type: actionTypes.STUDENT_SET_ASSIGNMENT, assignment});
 }

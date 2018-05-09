@@ -41,8 +41,7 @@ export const adminDefaultState = {
       start: new Date(),
       end: new Date()
     },
-    assignments: {
-      '0' : [{
+    assignments: [{
         key: 123,
         subject: '소프트웨어 공학',
         title: '프로젝트 제안서 제출',
@@ -69,8 +68,7 @@ export const adminDefaultState = {
         },
         start: new Date(2018, 4, 27),
         end: new Date(2018, 4, 27)
-      }]
-    },
+    }],
     assignmentsCardList: [],
     selectedAssignment: null,
   }
