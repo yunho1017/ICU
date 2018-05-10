@@ -45,7 +45,7 @@ exports.readAssignment = (req, res) => {
    };
 
   if(userInfo.isAdmin) {
-    Database.query('select * from assignment where auther = ?', [userInfo.id])
+    Database.query('select * from assignment inner join subject on assignment.subject_id = subject.subject_id where auther = ?', [userInfo.id])
       .then(results => {
       if(results.length< 0) {
         return res.status(500).end();
@@ -54,7 +54,7 @@ exports.readAssignment = (req, res) => {
       results.map(result => {
         let assignment = {
           key: result.assignment_id,
-          subject: result.subject_id,
+          subject: result.name,
           auther: result.auther,
           colorCode: result.color_code,
           title: result.title,
