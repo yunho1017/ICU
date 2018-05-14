@@ -1,7 +1,10 @@
 #signin-section {
   width: 100%;
   height: 100vh;
-  background: linear-gradient( to bottom, #504e5c, #232227);
+  background: url('../assets/img/background.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 #signin-wrapper {
@@ -20,56 +23,72 @@
 .signin-input-wrapper {
   width: 300px;
   height: 50px;
-  border-radius: 30px;
-  background-color: rgb(80, 71, 80);
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  opacity: 0.7;
+  border-radius: 30px;
+  background-color: #000000;
 }
 
 .signin-img {
   width: calc( 20% - 10px );
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.signin-img img {
+  width: 30px;
+  height: 30px;
 }
 
 .signin-input {
   width: 80%;
   height: 80%;
-  margin-right: 10px;
+  margin-right: 20px;
   border: 0;
-  background-color : rgb(80, 71, 80);
-  color: white;
+  color: #ffff;
+  opacity: 0.7;
   font-size: 13px;
+  background-color: #000000;
 }
 
 .signin-input::placeholder {
-  color: white;
+  opacity: 0.7;
+  color: #ffff;
   font-size: 13px;
 }
 
 .signin-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: white;
+  opacity: 0.7;
+  color: #ffff;
   font-size: 13px;
 }
 
 .signin-input::-ms-input-placeholder { /* Microsoft Edge */
-  color: white;
+  opacity: 0.7;
+  color: #ffff;
   font-size: 13px;
 }
 
 .signin-input:focus {
   outline: none;
 }
+
 #signin-btn {
   width: 300px;
   height: 50px;
   border: 0;
-  border-radius: 30px;
+  border-radius: 10px;
+  background-color: #00462b;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16);
   text-align: center;
-  background-color: #ec4969;
   line-height: 50px;
-  color: white;
+  color: #ffff;
   font-size: 13px;
   cursor: pointer;
 }
@@ -77,7 +96,7 @@
 #signin-sub-btn {
   width: 300px;
   font-size: 10px;
-  color: white;
+  color: #ffff;
   padding: 10px 0;
 }
 

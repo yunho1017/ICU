@@ -5,13 +5,14 @@ import AssignmentForAdmin from './AssignmentForAdmin';
 import AssignmentInfo from './AssignmentInfo';
 import '../../css/modal.css';
 
-class AssignmentDetail extends Component {
+class AssignmentModal extends Component {
   render(){
     const { assignment, onClickHandler } = this.props;
     const assingmentInfo = [
       {title: "과제명", contents: assignment.title},
+      {title: "과목명", contents: assignment.subject},
       {title: "작성자", contents: assignment.auther},
-      {title: "가간", contents: getDateFormat(assignment.start) + ' ~ ' + getDateFormat(assignment.end)},
+      {title: "기간", contents: getDateFormat(assignment.start) + ' ~ ' + getDateFormat(assignment.end)},
       {title: "설명", contents: assignment.detail},
     ]
     return (
@@ -70,4 +71,4 @@ class AssignmentDetail extends Component {
   }
 }
 
-export default AssignmentDetail;
+export default AssignmentModal;

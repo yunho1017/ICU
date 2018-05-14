@@ -6,3 +6,58 @@
   box-shadow: 0 0 15px 0 rgba(126, 126, 126, 0.25);
   padding: 20px;
 }
+
+.assignment-input-wrapper {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.assignment-input-title {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.assignment-input-contents {
+  padding: 10px;
+  height: 20px;
+  width: calc(100% - 20px);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: #f6f7f9;
+  font-size: 13px;
+}
+
+.assignment-input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.assignment-input-dropdown {
+  display: inline-block;
+  width: 105px;
+  height: 100%;
+  background-color: white;
+  position: relative;
+}
+
+.assignment-input-dropdown:first {
+  margin-right: 10px;
+}
+.dropdown-section {
+  width: 200px;
+  height: 100px;
+  background-color: white;
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+
+.assignment-input-contents span {
+  display: inline-block;
+  width: 30px;
+  height: 100%;
+  font-size: 20px;
+  text-align: center;
+}

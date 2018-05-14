@@ -92,7 +92,7 @@ const mapStateToProps= (state) => {
   return {
     assignments: state.student.assignments,
     assignmentsCardList: state.student.assignmentsCardList,
-    selectedDate: state.student.selectedDate
+    selectedDate: state.student.selectedDate,
   } 
 }
   

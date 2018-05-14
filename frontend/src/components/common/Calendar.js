@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import BigCalendar from 'react-big-calendar';
 import Toolbar from 'react-big-calendar';
 import moment from 'moment';
@@ -16,6 +17,7 @@ const CalendarLayout = ({events, selectDateHandler, selectEventHandler, eventPro
           events = {events}
           views = {['month']}
           defaultDate = { new Date() }
+          onView = {() => {console.log('asdf')}}
           onSelectSlot = {selectDateHandler}
           onSelectEvent = {selectEventHandler}
           eventPropGetter = {eventPropGetter}
@@ -60,19 +62,30 @@ class Calendar extends Component {
 }
 
 class CustomToolbar extends Toolbar {
+  static propTypes = {
+    view: PropTypes.string.isRequired,
+    views: PropTypes.arrayOf(PropTypes.string).isRequired,
+    label: PropTypes.node.isRequired,
+    messages: PropTypes.object,
+    onNavigate: PropTypes.func.isRequired,
+    onViewChange: PropTypes.func.isRequired,
+  }
+
   state = {
     selectedMonth: new Date().getMonth() + 1
   }
 
   render() {
+    let { messages, label } = this.props;
+    
     return (
       <div className='rbc-toolbar'>
         <span className="rbc-btn-group">
-          <button type="button" onClick={() => this.navigate('TODAY')} >today</button>
-          <button type="button" onClick={() => this.navigate('PREV')}>back</button>
-          <button type="button" onClick={() => this.navigate('NEXT')}>next</button>
+          <button type="button" onClick={() => this.navigate('TODAY')} >{messages.today}</button>
+          <button type="button" onClick={() => this.navigate('PREV')}>{messages.previous}</button>
+          <button type="button" onClick={() => this.navigate('NEXT')}>{messages.next}</button>
         </span>
-        <span className="rbc-toolbar-label">{this.props.label}</span>
+        <span className="rbc-toolbar-label">{label}</span>
       </div>
     );
   }

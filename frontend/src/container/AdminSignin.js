@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom';
 import withSigninFunc from './HoC/withSigninFunc';
 import '../css/signin.css'
 
-class Signin extends Component {
+class AdminSignin extends Component {
   render() {
-    // if(localStorage.getItem('isLogin') === 'true' && localStorage.getItem('isAdmin') === 'false' ) {
-    //   this.props.history.push('/');
+    // if(localStorage.getItem('isLogin') === 'true' && localStorage.getItem('isAdmin') === 'true' ) {
+    //   this.props.history.push('/admin');
     // }
     return (
       <div id="signin-section" onKeyDown={this.props.enterEventHanlder}>
@@ -19,9 +19,9 @@ class Signin extends Component {
             <div className="signin-img"><img src={require('../assets/img/signin_pwd.png')} alt="pwd"/></div>
             <input className="signin-input" type="password" placeholder="password" value= {this.props.pwd} onChange={this.props.pwdInput}/>
           </div>
-          <div id="signin-btn" onClick={this.props.signin}>학생 로그인</div>
+          <div id="signin-btn" onClick={this.props.signin}>교사 로그인</div>
           <div id="signin-sub-btn">
-            <span onClick={this.changeIsAdmin}>선생님이세요?</span>
+            <span onClick={this.changeIsAdmin}>학생이세요?</span>
             <span>아이디/비밀번호 찾기</span>
           </div>
         </div>
@@ -30,8 +30,8 @@ class Signin extends Component {
   }
 
   changeIsAdmin = () => {
-    return this.props.history.push('/signin');
+    return this.props.history.push('/signin/admin');
   }
 }
 
-export default withRouter(withSigninFunc(false)(Signin));
+export default withRouter(withSigninFunc(true)(AdminSignin));

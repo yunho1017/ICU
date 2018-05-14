@@ -1,4 +1,4 @@
-export const API_SERVER_DOMAIN = '';
+export const API_SERVER_DOMAIN = 'http://localhost:8080/api';
 
 export const adminDefaultState = {
     subjects: [{
@@ -16,7 +16,7 @@ export const adminDefaultState = {
     },
     assignments: [{
       key: 123,
-      subject: '과목',
+      subject: '소프트웨어 공학',
       title: '프로젝트 제안서 제출',
       detail: '프로젝트 제안서를 제출하시오',
       auther: '양은정',
@@ -72,10 +72,3 @@ export const adminDefaultState = {
     assignmentsCardList: [],
     selectedAssignment: null,
   }
-  
-export const authDefaultState = {
-  isLogin: false,
-  isAdmin: false,
-  token: '',
-  refreshToken: ''
-}

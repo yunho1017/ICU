@@ -1,20 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Router, browserHistory, IndexRoute } from 'react-router';
-import { Main, AdminMain, DefaultLayout, Signin, LandingPage } from './container/index';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Main, AdminMain, AdminSignin, DefaultLayout, Signin, LandingPage, AdminSignup } from './container/index';
 import IndexProvider from './IndexProvider';
 import './index.css';
 
 ReactDOM.render(
   <IndexProvider>
-    <Router history={browserHistory}>
-      <Route path='/index' component={LandingPage}/>
-      <Route path='/signin' component={Signin}/>
-      {/* <Route path='/signup' component={Signup}/> */}
-      <Route path='/' component={DefaultLayout} >
-        <IndexRoute component={Main}/>
-        <Route path='/admin' component={AdminMain}/>
-      </Route>
+    <Router>
+      <Switch>
+        <Route path='/index' component={LandingPage} exact/>
+        <Route path='/signin' component={Signin} exact/>
+        <Route path='/signin/admin' component={AdminSignin} exact/>
+        <Route path='/signup/admin' component={AdminSignup} exact/>
+        <Route render={() => 
+          <React.Fragment>
+            <DefaultLayout/>
+            <Switch>
+              <Route path="/" component={Main} exact />
+              <Route path="/admin" component={AdminMain} exact />
+            </Switch>
+          </React.Fragment> 
+        } />
+      </Switch>
     </Router>
   </IndexProvider>
 , document.getElementById('root'));
