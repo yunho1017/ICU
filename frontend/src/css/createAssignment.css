@@ -32,6 +32,7 @@
   margin: 0;
   border: 0;
   padding: 0;
+  background-color: #f6f7f9;
 }
 
 .assignment-input-dropdown {
@@ -40,6 +41,7 @@
   height: 100%;
   background-color: white;
   position: relative;
+  background-color: #f6f7f9;
 }
 
 .assignment-input-dropdown:first {
@@ -60,4 +62,19 @@
   height: 100%;
   font-size: 20px;
   text-align: center;
+}
+
+#assignment-upload-btn {
+  display: inline-block;
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: #83bdd0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  color: white;
+  margin-right: 10px;
 }

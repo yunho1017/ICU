@@ -41,6 +41,7 @@ const CreateAssignment = ({ selectedDate: { start: startDate }, selectedDate: { 
           <input className="assignment-input" type="text"/>
         </div>
       </div>
+          <div id="assignment-upload-btn">과제 업로드</div>
     </div>
   )
 }

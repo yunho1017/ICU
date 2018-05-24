@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Header from '../components/common/Header';
 import Modal from '../components/modal/Modal';
 import SideMenu from '../components/main/SideMenu';
@@ -6,6 +7,7 @@ import { ModalConsumer } from '../context/ModalProvider';
 import { connect } from 'react-redux';
 import * as adminAction from '../action/admin';
 import * as studentAction from '../action/student';
+import * as authAction from '../action/auth';
 import { bindActionCreators } from 'redux';
 
 class DefaultLayout extends Component {
@@ -14,7 +16,7 @@ class DefaultLayout extends Component {
       <ModalConsumer>
         { ({ state, actions }) => (
             <div>
-              <Header state = {state} actions = {actions} />
+              <Header state = {state} actions = {actions} clickLogout = {this.clickLogout}/>
               {this.renderDefaultLayout(state, actions)}
               {this.props.children}
             </div>
@@ -56,7 +58,11 @@ class DefaultLayout extends Component {
         </React.Fragment>
       )
     }
+  }
 
+  clickLogout = _ => {
+    authAction.logout();
+    this.props.history.push('/signin');
   }
 }
 
@@ -75,4 +81,4 @@ const mapStateToProps= (state) => {
 const mapDispatchToProps= (dispatch) => {
   return bindActionCreators({ ...adminAction, ...studentAction }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(DefaultLayout);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DefaultLayout));

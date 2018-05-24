@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import * as action from '../action/admin';
-import Calendar from '../components/common/Calendar';
-import CreateAssignment from '../components/admin/CreateAssignment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ModalConsumer } from '../context/ModalProvider';
-import AssignmentContents from '../components/common/AssignmentContents';
-import '../css/main.css';
+import Calendar from '../../components/common/Calendar';
+import CreateAssignment from '../../components/admin/CreateAssignment';
+import { ModalConsumer } from '../../context/ModalProvider';
+import AssignmentContents from '../../components/common/AssignmentContents';
+import '../../css/main.css';
 
-class AdminMain extends Component{
+import * as action from '../../action/admin';
+import * as requestAction from '../../action/request';
+
+class AdminMain extends Component {
   render() {
     return (
       <ModalConsumer>
@@ -25,6 +27,7 @@ class AdminMain extends Component{
 
   async componentDidMount() {
     await this.props.setDateForAdmin();
+    //await this.props.setSubject(localStorage.getItem('token'), true);
   }
 
   renderChild = (modalActions) => {
@@ -76,7 +79,7 @@ const mapStateToProps= (state) => {
 }
   
 const mapDispatchToProps= (dispatch) => {
-  return bindActionCreators({ ...action }, dispatch)
+  return bindActionCreators({ ...action, ...requestAction }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminMain);

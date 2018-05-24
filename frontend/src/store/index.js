@@ -12,6 +12,6 @@ function configureStore(initialState) {
 
 export const store = configureStore();
 
-// export const dispatch = (action)=>{
-//   store.dispatch(action);
-// }
+export const dispatch = (action)=>{
+  store.dispatch(action);
+}

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import * as action from '../action/student';
-import AssignmentList from '../components/main/AssignmentList';
-import Calendar from '../components/common/Calendar';
-import { ModalConsumer } from '../context/ModalProvider';
+import * as action from '../../action/student';
+import * as requestAction from '../../action/request';
+import AssignmentList from '../../components/main/AssignmentList';
+import Calendar from '../../components/common/Calendar';
+import { ModalConsumer } from '../../context/ModalProvider';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import '../css/main.css';
+import '../../css/main.css';
 
 class MainLayout extends Component {
   render() {
@@ -41,6 +42,7 @@ class MainLayout extends Component {
 class Main extends Component {
   async componentDidMount() {
     await this.props.setDateForStudent();
+    //await this.props.setSubject(localStorage.getItem('token'), false);
     this.setAssignmentsCardList();
   }
 
@@ -97,7 +99,7 @@ const mapStateToProps= (state) => {
 }
   
 const mapDispatchToProps= (dispatch) => {
-  return bindActionCreators({ ...action }, dispatch)
+  return bindActionCreators({ ...action, ...requestAction }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

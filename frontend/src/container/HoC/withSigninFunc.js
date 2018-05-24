@@ -11,6 +11,12 @@ const withSigninFunc = (isAdmin) => (WrappedComponent) => {
     signin = async () => {
       if(!this.state.id || !this.state.pwd) return alert('아이디 혹은 비밀번호를 입력하세요!');
       await action.signin({id: this.state.id, pwd: this.state.pwd}, isAdmin);
+
+      if(localStorage.getItem('isLogin') === 'true') {
+        alert('로그인이 완료되었습니다.');
+        if(localStorage.getItem('isAdmin') === 'true') this.props.history.push('/admin');
+        else this.props.history.push('/');
+      }
     }
   
     idInput = (e) => {
@@ -29,6 +35,11 @@ const withSigninFunc = (isAdmin) => (WrappedComponent) => {
       if(e.keyCode === 13) {
         this.signin();
       }
+    }
+
+    changeIsAdmin = () => {
+      if(isAdmin) return this.props.history.push('/signin');
+      return this.props.history.push('/signin/admin');
     }
 
     render() {
