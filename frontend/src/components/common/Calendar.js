@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
 import BigCalendar from 'react-big-calendar';
-import Toolbar from 'react-big-calendar';
 import moment from 'moment';
+import CustomToolbar from './CustomToolbar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../../css/calendar.css';
 
 BigCalendar.momentLocalizer(moment);
 
 const CalendarLayout = ({events, selectDateHandler, selectEventHandler, eventPropGetter, dateCellWrapper}) => {
+  
   return (
     <div id="calendar-section">
       <div id="calendar-wrapper">
@@ -58,49 +58,6 @@ class Calendar extends Component {
         dateCellWrapper = {this.dateCellWrapper}
       />
     )
-  }
-}
-
-class CustomToolbar extends Toolbar {
-  static propTypes = {
-    view: PropTypes.string.isRequired,
-    views: PropTypes.arrayOf(PropTypes.string).isRequired,
-    label: PropTypes.node.isRequired,
-    messages: PropTypes.object,
-    onNavigate: PropTypes.func.isRequired,
-    onViewChange: PropTypes.func.isRequired,
-  }
-
-  state = {
-    selectedMonth: new Date().getMonth() + 1
-  }
-
-  render() {
-    let { messages, label } = this.props;
-    
-    return (
-      <div className='rbc-toolbar'>
-        <span className="rbc-btn-group">
-          <button type="button" onClick={() => this.navigate('TODAY')} >{messages.today}</button>
-          <button type="button" onClick={() => this.navigate('PREV')}>{messages.previous}</button>
-          <button type="button" onClick={() => this.navigate('NEXT')}>{messages.next}</button>
-        </span>
-        <span className="rbc-toolbar-label">{label}</span>
-      </div>
-    );
-  }
-
-  navigate = action => {
-    const selectedMonth = this.state.selectedMonth;
-
-    switch(action) {
-      case 'TODAY' : this.setState({ selectedMonth: new Date().getMonth() + 1 }); break;
-      case 'PREV' : this.setState({ selectedMonth: selectedMonth - 1 }); break;
-      case 'NEXT' : this.setState({ selectedMonth: selectedMonth + 1 }); break;
-      default : break;
-    }
-    
-    this.props.onNavigate(action);
   }
 }
 

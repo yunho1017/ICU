@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import * as action from '../../action/student';
-import * as requestAction from '../../action/request';
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import AssignmentList from '../../components/main/AssignmentList';
 import Calendar from '../../components/common/Calendar';
 import { ModalConsumer } from '../../context/ModalProvider';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import '../../css/main.css';
+
+import * as action from '../../action/student';
+import * as requestAction from '../../action/request';
 
 class MainLayout extends Component {
   render() {
@@ -42,7 +44,6 @@ class MainLayout extends Component {
 class Main extends Component {
   async componentDidMount() {
     await this.props.setDateForStudent();
-    //await this.props.setSubject(localStorage.getItem('token'), false);
     this.setAssignmentsCardList();
   }
 
@@ -72,6 +73,12 @@ class Main extends Component {
   }
 
   render() {
+    if(localStorage.getItem('isLogin') === 'false') {
+      this.props.history.push('/signin');
+    } else {
+      if(localStorage.getItem('isAdmin') === 'true') this.props.history.push('/admin');
+    }
+    
     return (
       <ModalConsumer>
           { (modal) => (
@@ -102,4 +109,4 @@ const mapDispatchToProps= (dispatch) => {
   return bindActionCreators({ ...action, ...requestAction }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

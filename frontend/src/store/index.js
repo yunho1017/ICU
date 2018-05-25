@@ -1,12 +1,11 @@
-import { compose, createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducers from '../reducer/index';
 import thunk from 'redux-thunk';
 
-function configureStore(initialState) {
+function configureStore() {
   return createStore(
     reducers,
-    initialState,
-    compose(applyMiddleware(thunk))
+    applyMiddleware(thunk)
   )
 }
 

@@ -9,49 +9,77 @@ export const actionTypes = {
   ADMIN_CREATE_SUBJECT: 'ADMIN_CREATE_SUBJECT',
   STUDENT_SELECT_SIDE_ITEM: 'STUDENT_SELECT_SIDE_ITEM',
   STUDENT_SET_ASSIGNMENT: 'ADMIN_SET_ASSIGNMENT',
+  STUDENT_SET_SUBJECT: 'STUDENT_SET_SUBJECT',
 }
 
-export const setSubject = async (token, isAdmin) => {
+export const setSubject = (token, isAdmin) => {
   return async (dispatch, getState) => {
-    let defaultValue =  [{ id:'0', name: '소프트웨어 공학' }];
-    let response = await axios.get(API_SERVER_DOMAIN + '/subject', { }, {
+    let action = {};
+    let defaultValue =  [{ id:'0', name: '기본 값이에용' }];
+    let response;
+    
+    if(isAdmin) action.type = actionTypes.ADMIN_SET_SUBJECT;
+    else action.type = actionTypes.STUDENT_SET_SUBJECT;
+
+    response = await axios({
+      method: 'GET',
+      url: API_SERVER_DOMAIN + '/subject',
       headers: {
         authorization: token
       }
     });
-  
+    
     if(response.status === 200) {
-      if(isAdmin) dispatch({ type: actionTypes.ADMIN_SET_SUBJECT, subjects: response.data});
-      else dispatch({ type: actionTypes.STUDENT_SET_SUBJECT, subjects: response.data});
+      action = { ...action,
+        subjects: response.data.subjects
+      };
+    } else {
+      action = { ...action,
+        subjects: defaultValue
+      };
     }
-  
-    if(isAdmin) dispatch({ type: actionTypes.ADMIN_SET_SUBJECT, subjects: defaultValue});
-    else dispatch({ type: actionTypes.STUDENT_SET_SUBJECT, subjects: defaultValue});
+    dispatch(action);
   }
 }
 
-export const setAssignment = async (requestData, token, isAdmin) => {
+export const setAssignment = (requestData, token, isAdmin) => {
   return async (dispatch, getState) => {
-    let response = await axios.get(API_SERVER_DOMAIN + '/assignment',requestData, {
+    let action = {};
+    let response;
+    
+    if(isAdmin) action.type = actionTypes.ADMIN_SET_ASSIGNMENT;
+    else action.type = actionTypes.STUDENT_SET_ASSIGNMENT;
+
+    response = await axios({
+      method: 'GET',
+      url: API_SERVER_DOMAIN + '/assignment',
+      data: requestData,
       headers: {
         authorization: token
       }
     });
-  
+
     if(response.status === 200) {
-      if(isAdmin) dispatch({ type: actionTypes.ADMIN_SET_ASSIGNMENT, assignments: response.data});
-      else dispatch({ type: actionTypes.STUDENT_SET_ASSIGNMENT, assignments: response.data});
+      action = { ...action,
+        assignments: response.data.assignments
+      }
+    } else {
+      action = { ...action,
+        assignments: []
+      };
     }
-  
-    if(isAdmin) dispatch({ type: actionTypes.ADMIN_SET_ASSIGNMENT, assignments: []});
-    else dispatch({ type: actionTypes.STUDENT_SET_ASSIGNMENT, assignments: []});
+
+    dispatch(action);
   }
 }
 
-export const createAssignment = async (requestData, token, isAdmin) => {
+export const createAssignment = (requestData, token, isAdmin) => {
   return async (dispatch, getState) => {
     if(isAdmin) {
-      let response = await axios.post(API_SERVER_DOMAIN + '/assignment',requestData, {
+      let response = await axios({
+        method: 'POST',
+        url: API_SERVER_DOMAIN + '/assignment',
+        data: requestData,
         headers: {
           authorization: token
         }
@@ -64,10 +92,13 @@ export const createAssignment = async (requestData, token, isAdmin) => {
   }
 }
 
-export const createSubject = async (requestData, token, isAdmin) => {
+export const createSubject = (requestData, token, isAdmin) => {
   return async (dispatch, getState) => {
     if(isAdmin) {
-      let response = await axios.post(API_SERVER_DOMAIN + '/subject',requestData, {
+      let response = await axios({
+        method: 'POST',
+        url: API_SERVER_DOMAIN + '/subject',
+        data: requestData,
         headers: {
           authorization: token
         }

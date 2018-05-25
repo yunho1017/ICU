@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import Calendar from '../../components/common/Calendar';
 import CreateAssignment from '../../components/admin/CreateAssignment';
 import { ModalConsumer } from '../../context/ModalProvider';
@@ -12,6 +13,12 @@ import * as requestAction from '../../action/request';
 
 class AdminMain extends Component {
   render() {
+    if(localStorage.getItem('isLogin') === 'false') {
+      this.props.history.push('/signin');
+    } else {
+      if(localStorage.getItem('isAdmin') === 'false') this.props.history.push('/');
+    }
+
     return (
       <ModalConsumer>
         {
@@ -27,7 +34,6 @@ class AdminMain extends Component {
 
   async componentDidMount() {
     await this.props.setDateForAdmin();
-    //await this.props.setSubject(localStorage.getItem('token'), true);
   }
 
   renderChild = (modalActions) => {
@@ -49,7 +55,7 @@ class AdminMain extends Component {
               selectEventHandler  = {selectEventHandler} 
               events = {this.props.assignments} 
               selectedDate = {this.props.selectedDate}
-            />
+             />
             <CreateAssignment
               selectedDate = {this.props.selectedDate}
             />
@@ -74,7 +80,7 @@ const mapStateToProps= (state) => {
   return {
     assignments: state.admin.assignments,
     selected: state.admin.selectedItem,
-    selectedDate: state.admin.selectedDate
+    selectedDate: state.admin.selectedDate,
   } 
 }
   
@@ -82,4 +88,4 @@ const mapDispatchToProps= (dispatch) => {
   return bindActionCreators({ ...action, ...requestAction }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminMain);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminMain)); 

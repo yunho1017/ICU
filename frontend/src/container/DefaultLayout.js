@@ -5,10 +5,12 @@ import Modal from '../components/modal/Modal';
 import SideMenu from '../components/main/SideMenu';
 import { ModalConsumer } from '../context/ModalProvider';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import * as adminAction from '../action/admin';
 import * as studentAction from '../action/student';
 import * as authAction from '../action/auth';
-import { bindActionCreators } from 'redux';
+import * as requestAction from '../action/request';
 
 class DefaultLayout extends Component {
   render() {
@@ -24,7 +26,16 @@ class DefaultLayout extends Component {
       </ModalConsumer>
     )
   }
-  
+
+  async componentDidMount() {
+    if(localStorage.getItem('isAdmin') === 'true') {
+      await this.props.setSubject(localStorage.getItem('token'), true);
+      await this.props.selectSideItemForAdmin(this.props.adminItems[0].id);
+    }else {
+      await this.props.setSubject(localStorage.getItem('token'), false);
+      await this.props.selectSideItemForStudent(this.props.studentItems[0].id);
+    }
+  }
   renderModal = (state, actions, selectedAssignment) => {
     if(state.isModal) return (
       <Modal 
@@ -79,6 +90,6 @@ const mapStateToProps= (state) => {
 }
   
 const mapDispatchToProps= (dispatch) => {
-  return bindActionCreators({ ...adminAction, ...studentAction }, dispatch)
+  return bindActionCreators({ ...adminAction, ...studentAction, ...requestAction}, dispatch)
 }
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DefaultLayout));
